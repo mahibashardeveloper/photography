@@ -2,7 +2,10 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="javascript:void(0)"> <img :src="'/images/logo.png'" class="img-fluid" alt="logo.png"> Photography</a>
+            <router-link class="navbar-brand" :to="{name: 'home'}">
+                <img :src="'/images/logo.png'" class="img-fluid" alt="logo.png">
+                Photography
+            </router-link>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,7 +64,9 @@ export default {
 
     data(){
 
-        return{}
+        return{
+
+        }
 
     },
 

@@ -16,3 +16,4 @@ use \App\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.home');
 Route::get('/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.home.any');
+Route::get('/', function (){ return redirect()->route('lvs.home.any','home'); });

@@ -1,0 +1,17 @@
+.user-avatar{
+    width: 150px;
+    height: 150px;
+
+    img{
+        object-fit: cover;
+    }
+
+}
+
+.image-size{
+    height: 350px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

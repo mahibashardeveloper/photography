@@ -29,7 +29,9 @@
 
             .nav-item{
                 .nav-link{
-
+                    &.active{
+                        font-weight: bold;
+                    }
                 }
 
                 .dropdown-menu{
@@ -46,6 +48,7 @@
                         &.active{
                             background-color: var(--light);
                             color: var(--black);
+                            font-weight: bold;
                         }
 
                     }

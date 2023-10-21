@@ -1,6 +1,8 @@
 <template>
 
-    this is settings page
+    <div class="p-3 bg-light fw-bold">
+        Settings
+    </div>
 
 </template>
 
