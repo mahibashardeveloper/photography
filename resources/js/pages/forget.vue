@@ -1,6 +1,6 @@
 <template>
 
-
+    this is forget page
 
 </template>
 

@@ -1,6 +1,6 @@
 <template>
 
-    this is details page
+    this is settings page
 
 </template>
 
