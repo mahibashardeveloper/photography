@@ -5,31 +5,31 @@
     </div>
 
     <div class="d-flex align-items-center mb-4">
-        <a href="javascript:void(0)" class="btn btn-dark me-3" @click="changePasswordModal">
+        <a href="javascript:void(0)" class="btn me-3" @click="changePasswordModal" :class="{'btn-dark' : tab === 1, 'btn-outline-dark' : tab !== 1}">
             Change Password
         </a>
-        <a href="javascript:void(0)" class="btn btn-dark" @click="editPasswordModal">
+        <a href="javascript:void(0)" class="btn" @click="editPasswordModal" :class="{'btn-dark' : tab === 2, 'btn-outline-dark' : tab !== 2}">
             Edit Profile
         </a>
     </div>
 
-    <form class="col-12 p-3 border bg-white" v-if="tab === 1">
+    <form class="col-12 col-md-6 p-3 border bg-white rounded-3" v-if="tab === 1">
         <div class="mb-3">
             <label for="current_password" class="form-label">Current Password</label>
-            <input type="text" name="current_password" class="form-control shadow-none border-secondary-subtle" required>
+            <input type="text" name="current_password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
         </div>
         <div class="mb-3">
             <label for="new_password" class="form-label">New Password</label>
-            <input type="text" name="new_password" class="form-control shadow-none border-secondary-subtle" required>
+            <input type="text" name="new_password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
         </div>
         <div class="mb-3">
             <label for="confirm_password" class="form-label">Confirm Password</label>
-            <input type="text" name="confirm_password" class="form-control shadow-none border-secondary-subtle" required>
+            <input type="text" name="confirm_password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
         </div>
         <button type="submit" class="btn btn-dark">Update Password</button>
     </form>
 
-    <form class="col-12 p-3 border bg-white" v-if="tab === 2">
+    <form class="col-12 col-md-6 p-3 border bg-white rounded-3" v-if="tab === 2">
         <div class="mb-3">
             <div class="d-flex justify-content-center mb-3">
                 <div class="user-avatar">
@@ -46,11 +46,11 @@
         </div>
         <div class="mb-3">
             <label for="full_name" class="form-label">Name</label>
-            <input type="text" name="full_name" class="form-control shadow-none border-secondary-subtle" required>
+            <input id="full_name" type="text" name="full_name" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control shadow-none border-secondary-subtle" required>
+            <input id="email" type="email" name="email" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
         </div>
         <button type="submit" class="btn btn-dark">Update Profile</button>
     </form>

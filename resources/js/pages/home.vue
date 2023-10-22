@@ -1,6 +1,6 @@
 <template>
 
-    this is home page
+    <div class="hero-section"></div>
 
 </template>
 

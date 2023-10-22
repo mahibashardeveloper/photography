@@ -38,7 +38,7 @@
                             </li>
                             <li>
                                 <router-link class="dropdown-item" :to="{name: 'settings'}" active-class="active">
-                                    Settings
+                                    Account Settings
                                 </router-link>
                             </li>
                             <li>

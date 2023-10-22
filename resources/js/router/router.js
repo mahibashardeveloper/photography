@@ -17,7 +17,7 @@ const routes = [
         children: [
             {path: ROOT_URL + '/home', name: 'home', component: home, meta: {title: 'home'}},
             {path: ROOT_URL + '/login', name: 'login', component: login, meta: {title: 'login'}},
-            {path: ROOT_URL + '/register', name: '/register', component: register, meta: {title: 'register'}},
+            {path: ROOT_URL + '/register', name: 'register', component: register, meta: {title: 'register'}},
             {path: ROOT_URL + '/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
             {path: ROOT_URL + '/profile', name: 'profile', component: profile,
                 children: [
