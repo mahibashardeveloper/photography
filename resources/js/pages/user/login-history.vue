@@ -4,7 +4,7 @@
         Login History
     </div>
 
-    <div class="bg-light">
+    <div class="bg-white">
         <div class="col-md-12 ps-3 py-2 border border-secondary-subtle">
             Access Time
         </div>

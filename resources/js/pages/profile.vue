@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div class="user">
         <div class="row">
             <div class="col-md-3 p-3">
                 <div class="p-3 bg-light">
