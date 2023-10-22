@@ -45,28 +45,28 @@
 
 <script>
 
-export default {
+    export default {
 
-    data(){
+        data(){
 
-        return{
+            return{
+
+            }
+
+        },
+
+        mounted() {
+
+
+
+        },
+
+        methods: {
+
+
 
         }
 
-    },
-
-    mounted() {
-
-
-
-    },
-
-    methods: {
-
-
-
     }
-
-}
 
 </script>

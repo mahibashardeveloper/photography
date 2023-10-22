@@ -5,7 +5,7 @@
             <img :src="'/images/photography-background.png'" class="img-fluid" alt="photographer-background">
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-3">
-            <form class="border border-secondary-subtle p-4 rounded-3">
+            <form class="border border-secondary-subtle p-4 rounded-3" v-if="registerType === 1">
                 <div class="mb-4">
                     <div class="h4 mb-3">
                         New User Registration
@@ -41,6 +41,14 @@
                 </router-link>
 
             </form>
+            <div class="border border-secondary-subtle py-4 rounded-3 text-center" v-if="registerType === 2">
+                <div class="mb-3">
+                    You are complete registration please goto
+                </div>
+                <router-link :to="{name: 'login'}" class="text-decoration-none text-secondary">
+                    login page
+                </router-link>
+            </div>
         </div>
     </div>
 
@@ -48,28 +56,28 @@
 
 <script>
 
-export default {
+    export default {
 
-    data(){
+        data(){
 
-        return{
+            return{
+                registerType: 1,
+            }
+
+        },
+
+        mounted() {
+
+
+
+        },
+
+        methods: {
+
+
 
         }
 
-    },
-
-    mounted() {
-
-
-
-    },
-
-    methods: {
-
-
-
     }
-
-}
 
 </script>

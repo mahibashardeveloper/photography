@@ -100,28 +100,28 @@
 
 <script>
 
-export default {
+    export default {
 
-    data(){
+        data(){
 
-        return{
-            pageType: 1,
+            return{
+                pageType: 1,
+            }
+
+        },
+
+        mounted() {
+
+
+
+        },
+
+        methods: {
+
+
+
         }
 
-    },
-
-    mounted() {
-
-
-
-    },
-
-    methods: {
-
-
-
     }
-
-}
 
 </script>

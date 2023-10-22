@@ -5,28 +5,30 @@
     </div>
 
     <form class="p-3 col-12 border border-secondary-subtle mb-4">
-        <div class="row">
-            <div class="mb-3 col-12">
-                <label for="photo-upload" class="form-label fw-bold mb-3">Share a photo</label>
-                <label for="upload" id="photo-upload" class="user-post-image">
-                    <input id="upload" type="file" name="" class="d-none">
-                    <i class="bi bi-camera-fill me-2"></i> Upload a Photo
-                </label>
+        <div class="p-3">
+            <div class="row">
+                <div class="mb-3 col-12">
+                    <label for="photo-upload" class="form-label fw-bold mb-3">Share a photo</label>
+                    <label for="upload" id="photo-upload" class="user-post-image">
+                        <input id="upload" type="file" name="" class="d-none" required>
+                        <i class="bi bi-camera-fill me-2"></i> Upload a Photo
+                    </label>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="title" class="form-label">Location</label>
+                    <input id="title" type="text" name="title" class="form-control shadow-none border-secondary-subtle" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="status" class="form-label">Visibility Status</label>
+                    <select class="form-select shadow-none border-secondary-subtle" required>
+                        <option value="0">Select Visibility</option>
+                        <option value="1">Public</option>
+                        <option value="2">Private</option>
+                    </select>
+                </div>
             </div>
-            <div class="mb-3 col-6">
-                <label for="location" class="form-label">Location</label>
-                <input id="location" type="text" name="location" class="form-control shadow-none border-secondary-subtle">
-            </div>
-            <div class="mb-3 col-6">
-                <label for="status" class="form-label">Visibility Status</label>
-                <select class="form-select shadow-none border-secondary-subtle">
-                    <option value="">Select Visibility</option>
-                    <option value="">Public</option>
-                    <option value="">Private</option>
-                </select>
-            </div>
+            <button type="submit" class="btn btn-outline-dark px-4">Submit</button>
         </div>
-        <button type="submit" class="btn btn-outline-dark px-4">Submit</button>
     </form>
 
     <div class="p-2">
@@ -58,10 +60,10 @@
                 </div>
 
                 <div class="image-size">
-                    <img :src="each.file_path" class="img-fluid" alt="">
+                    <img :src="each.file_path" class="img-fluid" :alt="each.title">
                 </div>
                 <div class="mt-3 text-truncate col-12">
-                    Location: <br> {{each.location}}
+                    Title: <br> {{each.title}}
                 </div>
             </div>
         </div>
@@ -115,8 +117,8 @@
                                 </label>
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="location" class="form-label">Location</label>
-                                <input id="location" type="text" name="location" class="form-control shadow-none border-secondary-subtle">
+                                <label for="title" class="form-label">Title</label>
+                                <input id="title" type="text" name="title" class="form-control shadow-none border-secondary-subtle">
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="status" class="form-label">Visibility Status</label>
@@ -161,21 +163,21 @@ export default {
 
         return{
             image: [
-                {id: 1, file_path: '/images/collection-image/image-01.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 2, file_path: '/images/collection-image/image-02.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 3, file_path: '/images/collection-image/image-03.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 4, file_path: '/images/collection-image/image-04.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 5, file_path: '/images/collection-image/image-05.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 6, file_path: '/images/collection-image/image-06.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 7, file_path: '/images/collection-image/image-07.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 8, file_path: '/images/collection-image/image-08.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 9, file_path: '/images/collection-image/image-09.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 10, file_path: '/images/collection-image/image-10.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 11, file_path: '/images/collection-image/image-11.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 12, file_path: '/images/collection-image/image-12.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 13, file_path: '/images/collection-image/image-13.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
-                {id: 14, file_path: '/images/collection-image/image-14.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 2},
-                {id: 15, file_path: '/images/collection-image/image-15.jpg', location: 'Dhanmondi, Dhaka, Bangladesh', status: 1},
+                {id: 1, file_path: '/images/collection-image/image-01.jpg', title: 'image title 1', status: 1},
+                {id: 2, file_path: '/images/collection-image/image-02.jpg', title: 'image title 2', status: 2},
+                {id: 3, file_path: '/images/collection-image/image-03.jpg', title: 'image title 3', status: 1},
+                {id: 4, file_path: '/images/collection-image/image-04.jpg', title: 'image title 4', status: 2},
+                {id: 5, file_path: '/images/collection-image/image-05.jpg', title: 'image title 5', status: 1},
+                {id: 6, file_path: '/images/collection-image/image-06.jpg', title: 'image title 6', status: 2},
+                {id: 7, file_path: '/images/collection-image/image-07.jpg', title: 'image title 7', status: 1},
+                {id: 8, file_path: '/images/collection-image/image-08.jpg', title: 'image title 8', status: 2},
+                {id: 9, file_path: '/images/collection-image/image-09.jpg', title: 'image title 9', status: 1},
+                {id: 10, file_path: '/images/collection-image/image-10.jpg', title: 'image title 10', status: 2},
+                {id: 11, file_path: '/images/collection-image/image-11.jpg', title: 'image title 11', status: 1},
+                {id: 12, file_path: '/images/collection-image/image-12.jpg', title: 'image title 12', status: 2},
+                {id: 13, file_path: '/images/collection-image/image-13.jpg', title: 'image title 13', status: 1},
+                {id: 14, file_path: '/images/collection-image/image-14.jpg', title: 'image title 14', status: 2},
+                {id: 15, file_path: '/images/collection-image/image-15.jpg', title: 'image title 15', status: 1},
             ]
         }
 
