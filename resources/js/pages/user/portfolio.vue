@@ -15,7 +15,7 @@
                     </label>
                 </div>
                 <div class="mb-3 col-6">
-                    <label for="title" class="form-label">Location</label>
+                    <label for="title" class="form-label">Title</label>
                     <input id="title" type="text" name="title" class="form-control shadow-none border-secondary-subtle" required>
                 </div>
                 <div class="mb-3 col-6">

@@ -1,16 +1,41 @@
 <template>
 
-    <div class="hero-section" style="background-image: url('/images/background-image.jpeg')">
-
-    </div>
-
-    <div class="p-3">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-            <div class="p-3 border border-secondary-subtle" v-for="each in image">
-                <img :src="each.file_path" class="img-fluid" alt="image">
+    <section class="w-100 pb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 ps-3 py-5">
+                <div class="col-12 col-md-8 col-lg-7 fw-bold h1 mb-5">
+                    Create your beautiful photography portfolio
+                </div>
+                <div class="d-flex align-items-center flex-wrap">
+                    <a href="javascript:void(0)" class="btn-outline-theme me-3 my-3">
+                        Get Started
+                    </a>
+                    <a href="javascript:void(0)" class="btn-secondary-outline-theme my-3">
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 px-3">
+                <img :src="'/images/background-image.jpeg'" class="img-fluid rounded-4" alt="background-image">
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="w-100">
+        <div class="row align-items-center">
+            <div class="col-md-6 py-3">
+                <div class="position-relative">
+                    <input type="text" class="form-control shadow-none border border-secondary-subtle ps-5" placeholder="Search Here anything">
+                    <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 py-3">
+
+            </div>
+        </div>
+    </section>
 
 </template>
 
@@ -21,23 +46,7 @@
         data(){
 
             return{
-                image: [
-                    {id: 1, file_path: '/images/collection-image/image-01.jpg' },
-                    {id: 2, file_path: '/images/collection-image/image-02.jpg' },
-                    {id: 3, file_path: '/images/collection-image/image-03.jpg' },
-                    {id: 4, file_path: '/images/collection-image/image-04.jpg' },
-                    {id: 5, file_path: '/images/collection-image/image-05.jpg' },
-                    {id: 6, file_path: '/images/collection-image/image-06.jpg' },
-                    {id: 7, file_path: '/images/collection-image/image-07.jpg' },
-                    {id: 8, file_path: '/images/collection-image/image-08.jpg' },
-                    {id: 9, file_path: '/images/collection-image/image-09.jpg' },
-                    {id: 10, file_path: '/images/collection-image/image-10.jpg' },
-                    {id: 11, file_path: '/images/collection-image/image-11.jpg' },
-                    {id: 12, file_path: '/images/collection-image/image-12.jpg' },
-                    {id: 13, file_path: '/images/collection-image/image-13.jpg' },
-                    {id: 14, file_path: '/images/collection-image/image-14.jpg' },
-                    {id: 15, file_path: '/images/collection-image/image-15.jpg' },
-                ]
+
             }
 
         },
