@@ -99,7 +99,7 @@ class PhotoService extends BaseController
             }
             $photography->photo = $request->photo;
             $photography->title = $request->title;
-            $photography -> status = $request->status;
+            $photography->status = $request->status;
             $photography->save();
             return ['status' => 200, 'msg' => 'data has been updated successfully.'];
         } catch (\Exception $e) {

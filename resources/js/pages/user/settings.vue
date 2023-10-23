@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <label for="update-photo" class="btn btn-outline-danger px-4 py-2">
+                <label for="update-photo" class="btn btn-outline-danger">
                     <input id="update-photo" type="file" name="" class="d-none" @change="attachFile($event)">
                     <i class="bi bi-repeat me-2"></i>
                     replace Photo

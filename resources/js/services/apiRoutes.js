@@ -14,6 +14,13 @@ const apiRoutes = {
     user_password: apiVersion + '/profile/password',
     user_logout: apiVersion + '/profile/logout',
 
+    // Photo
+    photo_create: apiVersion + '/photo/create',
+    photo_list: apiVersion + '/photo/list',
+    photo_single: apiVersion + '/photo/single',
+    photo_update: apiVersion + '/photo/update',
+    photo_delete: apiVersion + '/photo/delete',
+
     // Media
     media: apiVersion + '/media/upload',
 

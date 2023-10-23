@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,15 @@ Route::group(
 Route::prefix('media')->group( function () {
     Route::post('/upload', [MediaController::class, 'upload'])->name('User.Media.Upload');
 });
+
+/* -------------------------
+    Photo Controller
+--------------------------- */
+
+Route::prefix('photo')->group( function () {
+    Route::post('/create', [PhotoController::class, 'create'])->name('Photo.Create');
+    Route::post('/list', [PhotoController::class, 'list'])->name('Photo.List');
+    Route::post('/single', [PhotoController::class, 'single'])->name('Photo.Single');
+    Route::post('/update', [PhotoController::class, 'update'])->name('Photo.Update');
+    Route::post('/delete', [PhotoController::class, 'delete'])->name('Photo.Delete');
+} );
