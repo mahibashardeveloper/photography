@@ -153,7 +153,7 @@
                             <div class="mb-3 col-12">
                                 <label for="photo-upload" class="form-label fw-bold mb-3">Share a photo</label>
                                 <label for="upload" id="photo-upload" class="user-post-image" v-if="photoParam.avatar === null">
-                                    <input id="upload" type="file" class="d-none" @change="attachFile($event)">
+                                    <input id="upload" type="file" class="d-none" @change="attachFile($event)" accept="image/x-png,image/gif,image/jpeg">
                                     <i class="bi bi-camera-fill me-2"></i> Upload a Photo
                                 </label>
                                 <img class="img-fluid user-post-image" v-if="photoParam.avatar !== null" :src="photoParam.avatar" alt="profile">
