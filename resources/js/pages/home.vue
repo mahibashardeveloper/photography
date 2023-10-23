@@ -7,10 +7,10 @@
                     Create your beautiful photography portfolio
                 </div>
                 <div class="d-flex align-items-center flex-wrap">
-                    <router-link :to="{name: 'explore'}" class="btn-outline-theme me-3 my-3">
+                    <router-link :to="{name: 'explore'}" class="btn btn-theme me-3 my-3">
                         Explore
                     </router-link>
-                    <router-link :to="{name: 'login'}" class="btn-secondary-outline-theme my-3">
+                    <router-link :to="{name: 'login'}" class="btn btn-secondary-outline-theme my-3">
                         Get Started
                     </router-link>
                 </div>

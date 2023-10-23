@@ -1,14 +1,19 @@
+.btn{
+    line-height: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .btn-theme {
     display: inline-block;
-    padding: 10px 20px;
     text-decoration: none;
-    color: var(--white);
-    background-color: var(--btn-theme);
+    color: var(--white) !important;
+    background-color: var(--btn-theme) !important;
     transition: 0.3s all ease-in-out;
     border-radius: 10px;
 
     &:hover {
-        background-color: var(--btn-theme-dark);
+        background-color: var(--btn-theme-dark) !important;
         transition: 0.3s all ease-in-out;
     }
 
@@ -16,16 +21,15 @@
 
 .btn-outline-theme {
     display: inline-block;
-    padding: 10px 20px;
     text-decoration: none;
-    color: var(--btn-theme);
-    border: 1px solid var(--btn-theme);
+    color: var(--btn-theme) !important;
+    border: 1px solid var(--btn-theme) !important;
     transition: 0.3s all ease-in-out;
     border-radius: 10px;
 
     &:hover {
-        color: var(--white);
-        background-color: var(--btn-theme);
+        color: var(--white) !important;
+        background-color: var(--btn-theme) !important;
         transition: 0.3s all ease-in-out;
     }
 
@@ -33,15 +37,14 @@
 
 .btn-secondary-theme {
     display: inline-block;
-    padding: 10px 20px;
     text-decoration: none;
-    color: var(--white);
-    background-color: var(--btn-secondary-theme);
+    color: var(--white) !important;
+    background-color: var(--btn-secondary-theme) !important;
     transition: 0.3s all ease-in-out;
     border-radius: 10px;
 
     &:hover {
-        background-color: var(--btn-secondary-theme-dark);
+        background-color: var(--btn-secondary-theme-dark) !important;
         transition: 0.3s all ease-in-out;
     }
 
@@ -49,16 +52,15 @@
 
 .btn-secondary-outline-theme {
     display: inline-block;
-    padding: 10px 20px;
     text-decoration: none;
-    color: var(--btn-secondary-theme);
-    border: 1px solid var(--btn-secondary-theme);
+    color: var(--btn-secondary-theme) !important;
+    border: 1px solid var(--btn-secondary-theme) !important;
     transition: 0.3s all ease-in-out;
     border-radius: 10px;
 
     &:hover {
-        color: var(--white);
-        background-color: var(--btn-secondary-theme);
+        color: var(--white) !important;
+        background-color: var(--btn-secondary-theme) !important;
         transition: 0.3s all ease-in-out;
     }
 

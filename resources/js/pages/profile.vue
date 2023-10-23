@@ -9,9 +9,7 @@
 </template>
 
 <script>
-
     export default {
-
         data(){
             return{
                 UserInfo: window.core.UserInfo,
@@ -24,7 +22,5 @@
             }
         },
         methods: {}
-
     }
-
 </script>

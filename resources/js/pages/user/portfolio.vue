@@ -8,7 +8,7 @@
         Upload Photo
     </a>
 
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
         <div class="p-3" v-for="each in image">
             <div class="p-3 bg-white border border-secondary-subtle position-relative rounded-3">
                 <div class="position-absolute start-0 top-0 p-3">

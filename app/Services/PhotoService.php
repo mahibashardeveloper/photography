@@ -17,6 +17,7 @@ class PhotoService extends BaseController
                 [
                     'photo' => 'required',
                     'title' => 'required',
+                    'status' => 'required',
                 ]
             );
             if ($validator->fails()) {
