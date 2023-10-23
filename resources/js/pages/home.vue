@@ -48,7 +48,7 @@
                 <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">Start for free</div>
                     <div class="text-secondary p-3">
-                        Create and post your ad-free website online. You don't have to pay a dime.
+                        Create and post your image online. You don't have to pay.
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">Easy to use</div>
                     <div class="text-secondary p-3">
-                        No technical experience required! Make your free website with our easy-to-use editor.
+                        No technical experience required! Publish your image with control public and private.
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">SEO Friendly</div>
                     <div class="text-secondary p-3">
-                        Use Photography professional templates to present your business as a trustworthy partner.
+                        Use Photography professional photo to present your performance.
                     </div>
                 </div>
             </div>
@@ -72,8 +72,7 @@
                 <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">Device Friendly</div>
                     <div class="text-secondary p-3">
-                        Your website looks great on any device. Build and publish your website from desktop laptop
-                        or mobile.
+                        Your images looks great on any device. Build and publish your image from online.
                     </div>
                 </div>
             </div>
@@ -115,10 +114,10 @@
             <div class="p-3">
                 <div class="border">
                     <div class="h6 p-3 border-bottom fw-bold">
-                        Build on mobile
+                        submit Photo on website
                     </div>
                     <div class="text-secondary p-3">
-                        Build and publish your website from your mobile device.
+                        manage and publish your image from your mobile device on website.
                     </div>
                 </div>
             </div>
@@ -155,10 +154,10 @@
             <div class="p-3">
                 <div class="border">
                     <div class="h6 p-3 border-bottom fw-bold">
-                        Sell online (E-commerce)
+                        publish online
                     </div>
                     <div class="text-secondary p-3">
-                        Start selling your products online with Photography.
+                        Start publish your photo online with Photography.
                     </div>
                 </div>
             </div>
@@ -168,7 +167,7 @@
                         Subscriptions
                     </div>
                     <div class="text-secondary p-3">
-                        Sell subscriptions and charge your customers on a repeated schedule.
+                        take information from other photographers.
                     </div>
                 </div>
             </div>
