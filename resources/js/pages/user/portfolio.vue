@@ -32,11 +32,11 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3" v-if="tableData.length > 0 && loading === false">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" v-if="tableData.length > 0 && loading === false">
 
         <div class="p-3" v-for="each in tableData">
             <div class="bg-white border border-secondary-subtle position-relative">
-                <div class="position-absolute start-0 top-0 w-100 p-3 d-flex justify-content-between align-items-center">
+                <div class="position-absolute start-0 top-0 w-100 p-3 d-flex justify-content-between align-items-center z-3">
 
                     <div class="text-white">
                         <span v-if="each.status === 1">Public</span>
@@ -63,11 +63,12 @@
 
                 </div>
 
-                <div class="image-size">
+                <div class="image-size position-relative">
                     <img :src="'/storage/media/image/'+each.photo" :alt="each.photo">
+                    <div class="bg-dark bg-opacity-50 w-100 h-100 position-absolute"></div>
                 </div>
 
-                <div class="position-absolute bottom-0 start-0 p-2 text-truncate col-12 text-white">
+                <div class="position-absolute bottom-0 start-0 p-2 text-truncate col-12 text-white z-3">
                     Title: {{each.title}}
                 </div>
 

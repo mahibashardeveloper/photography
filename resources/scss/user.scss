@@ -25,13 +25,13 @@
         }
     }
     .image-size {
-        min-height: 350px;
         font-size: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         img{
+            background-position: center;
             object-fit: contain;
         }
     }
