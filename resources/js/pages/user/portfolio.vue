@@ -104,8 +104,8 @@
                             </div>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-warning px-4 py-2">Update</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-warning">Update</button>
                     </div>
                 </form>
             </div>
@@ -119,8 +119,8 @@
                     <div class="h3 pt-5 text-center fw-bold">Are you Sure?</div>
                 </div>
                 <div class="modal-footer border-top-0 d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary col-5 py-2" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger col-5 py-2">Confirm</button>
+                    <button type="button" class="btn btn-secondary col-5" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger col-5">Confirm</button>
                 </div>
             </div>
         </div>
@@ -137,20 +137,6 @@ export default {
         return{
             image: [
                 {id: 1, file_path: '/images/collection-image/image-01.jpg', title: 'image title 1', status: 1},
-                {id: 2, file_path: '/images/collection-image/image-02.jpg', title: 'image title 2', status: 2},
-                {id: 3, file_path: '/images/collection-image/image-03.jpg', title: 'image title 3', status: 1},
-                {id: 4, file_path: '/images/collection-image/image-04.jpg', title: 'image title 4', status: 2},
-                {id: 5, file_path: '/images/collection-image/image-05.jpg', title: 'image title 5', status: 1},
-                {id: 6, file_path: '/images/collection-image/image-06.jpg', title: 'image title 6', status: 2},
-                {id: 7, file_path: '/images/collection-image/image-07.jpg', title: 'image title 7', status: 1},
-                {id: 8, file_path: '/images/collection-image/image-08.jpg', title: 'image title 8', status: 2},
-                {id: 9, file_path: '/images/collection-image/image-09.jpg', title: 'image title 9', status: 1},
-                {id: 10, file_path: '/images/collection-image/image-10.jpg', title: 'image title 10', status: 2},
-                {id: 11, file_path: '/images/collection-image/image-11.jpg', title: 'image title 11', status: 1},
-                {id: 12, file_path: '/images/collection-image/image-12.jpg', title: 'image title 12', status: 2},
-                {id: 13, file_path: '/images/collection-image/image-13.jpg', title: 'image title 13', status: 1},
-                {id: 14, file_path: '/images/collection-image/image-14.jpg', title: 'image title 14', status: 2},
-                {id: 15, file_path: '/images/collection-image/image-15.jpg', title: 'image title 15', status: 1},
             ]
         }
 

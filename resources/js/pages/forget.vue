@@ -24,10 +24,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="forgetLoading === false">
+                        <button type="submit" class="btn btn-outline-dark" v-if="forgetLoading === false">
                             Forget
                         </button>
-                        <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="forgetLoading === true">
+                        <button type="button" class="btn btn-outline-dark" v-if="forgetLoading === true">
                             Loading...
                         </button>
                     </div>
@@ -84,10 +84,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="resetLoading === false">
+                        <button type="submit" class="btn btn-outline-dark" v-if="resetLoading === false">
                             Reset
                         </button>
-                        <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="resetLoading === true">
+                        <button type="button" class="btn btn-outline-dark" v-if="resetLoading === true">
                             Loading...
                         </button>
                     </div>

@@ -29,10 +29,10 @@
 
                 <div class="mb-3">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
-                        <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === false">
+                        <button type="submit" class="btn btn-outline-dark" v-if="accessLoading === false">
                             Login
                         </button>
-                        <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === true">
+                        <button type="button" class="btn btn-outline-dark" v-if="accessLoading === true">
                             Loading...
                         </button>
                         <router-link :to="{name: 'forget'}" class="text-decoration-none text-danger">

@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 
 import layout from '../layouts/layout.vue';
 import home from '../pages/home.vue';
-import explore from "../pages/explore.vue"
+import explore from "../pages/explore.vue";
 import login from '../pages/login.vue';
 import register from '../pages/register.vue';
 import forget from '../pages/forget.vue';

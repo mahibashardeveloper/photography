@@ -33,10 +33,10 @@
                     <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === false">
+                    <button type="submit" class="btn btn-outline-dark" v-if="accessLoading === false">
                         Registration
                     </button>
-                    <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === true">
+                    <button type="button" class="btn btn-outline-dark" v-if="accessLoading === true">
                         Loading...
                     </button>
                 </div>
