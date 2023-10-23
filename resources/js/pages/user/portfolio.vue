@@ -139,7 +139,7 @@
             <div class="modal-content">
                 <form @submit.prevent="managePhoto">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                        <h1 class="modal-title fw-bold fs-5" id="staticBackdropLabel">
                             <span v-if="photoParam.id === ''">
                                 Create Photo
                             </span>
@@ -160,12 +160,12 @@
                                 <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="title" class="form-label">Title</label>
+                                <label for="title" class="form-label fw-bold mb-3">Title</label>
                                 <input id="title" type="text" name="title" class="form-control" v-model="photoParam.title">
                                 <div class="error-text" v-if="error != null && error.title !== undefined" v-text="error.title[0]"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Visibility Status</label>
+                                <label for="status" class="form-label fw-bold mb-3">Visibility Status</label>
                                 <select class="form-select shadow-none border-secondary-subtle" v-model="photoParam.status">
                                     <option :value="1">Public { Default }</option>
                                     <option :value="2">Private</option>
