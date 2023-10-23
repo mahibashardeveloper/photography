@@ -1,28 +1,32 @@
-const apiVersion = '/api/user';
+const UserApiVersion = '/api/user';
+const GlobalApiVersion = '/api/global';
 
 const apiRoutes = {
 
     // Authentication
-    register: apiVersion + '/auth/register',
-    login: apiVersion + '/auth/login',
-    forget: apiVersion + '/auth/forget',
-    reset: apiVersion + '/auth/reset',
+    register: UserApiVersion + '/auth/register',
+    login: UserApiVersion + '/auth/login',
+    forget: UserApiVersion + '/auth/forget',
+    reset: UserApiVersion + '/auth/reset',
 
     // Profile
-    user_details: apiVersion + '/profile/details',
-    user_update: apiVersion + '/profile/update',
-    user_password: apiVersion + '/profile/password',
-    user_logout: apiVersion + '/profile/logout',
+    user_details: UserApiVersion + '/profile/details',
+    user_update: UserApiVersion + '/profile/update',
+    user_password: UserApiVersion + '/profile/password',
+    user_logout: UserApiVersion + '/profile/logout',
 
     // Photo
-    photo_create: apiVersion + '/photo/create',
-    photo_list: apiVersion + '/photo/list',
-    photo_single: apiVersion + '/photo/single',
-    photo_update: apiVersion + '/photo/update',
-    photo_delete: apiVersion + '/photo/delete',
+    photo_create: UserApiVersion + '/photo/create',
+    photo_list: UserApiVersion + '/photo/list',
+    photo_single: UserApiVersion + '/photo/single',
+    photo_update: UserApiVersion + '/photo/update',
+    photo_delete: UserApiVersion + '/photo/delete',
 
     // Media
-    media: apiVersion + '/media/upload',
+    media: UserApiVersion + '/media/upload',
+
+    //Global List
+    global_list: GlobalApiVersion + '/photo/list',
 
 }
 
