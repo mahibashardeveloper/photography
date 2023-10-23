@@ -13,24 +13,31 @@
                     <div class="text-secondary">Create your new account</div>
                 </div>
                 <div class="mb-3">
-                    <label for="full_name" class="form-label">Full Name</label>
-                    <input id="full_name" type="text" name="full_name" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                    <label for="name" class="form-label">Name</label>
+                    <input id="name" type="text" name="name" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.name" autocomplete="off">
+                    <div class="error-text" v-if="error != null && error.name !== undefined" v-text="error.name[0]"></div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" type="text" name="email" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                    <input id="email" type="text" name="email" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.email" autocomplete="off">
+                    <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" name="" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                    <input id="password" type="password" name="password" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.password" autocomplete="off">
+                    <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirm Password</label>
-                    <input id="confirm_password" type="password" name="confirm_password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <input id="password_confirmation" type="password" name="password_confirmation" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.password_confirmation" autocomplete="off">
+                    <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-outline-dark py-2 px-4">
-                        Register
+                    <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === false">
+                        Registration
+                    </button>
+                    <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === true">
+                        Loading...
                     </button>
                 </div>
 
@@ -56,28 +63,42 @@
 
 <script>
 
+    import apiService from "../services/apiServices.js";
+    import apiRoutes from "../services/apiRoutes.js";
+
     export default {
-
-        data(){
-
-            return{
+        data() {
+            return {
                 registerType: 1,
+                accessLoading: false,
+                registerParam: {
+                    name: '',
+                    email: '',
+                    password: '',
+                    password_confirmation: '',
+                },
+                error: null,
             }
-
         },
-
-        mounted() {
-
-
-
+        mounted() {},
+        created() {
+            if(this.UserInfo != null){
+                this.$router.push({name: 'dashboard'});
+            }
         },
-
         methods: {
-
-
-
+            register(){
+                this.accessLoading = true;
+                apiService.POST(apiRoutes.register, this.registerParam, (res) => {
+                    this.accessLoading = false;
+                    if(res.status === 200){
+                        this.registerType = 2;
+                    }else{
+                        this.error = res.errors;
+                    }
+                });
+            }
         }
-
     }
 
 </script>

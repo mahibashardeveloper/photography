@@ -9,18 +9,11 @@ const apiRoutes = {
     reset: apiVersion + '/auth/reset',
 
     // Profile
-    profile_details: apiVersion + '/profile/details',
-    profile_update: apiVersion + '/profile/update',
-    profile_password: apiVersion + '/profile/password',
-    profile_logout: apiVersion + '/profile/logout',
-    profile_userLog: apiVersion + '/profile/list',
-
-    //bookmark
-    photographyCreate: apiVersion + '/bookmark/create',
-    photographyList: apiVersion + '/bookmark/list',
-    photographySingle: apiVersion + '/bookmark/single',
-    photographyUpdate: apiVersion + '/bookmark/update',
-    photographyDelete: apiVersion + '/bookmark/delete',
+    profile_details: apiVersion + '/user/details',
+    profile_update: apiVersion + '/user/update',
+    profile_password: apiVersion + '/user/password',
+    profile_logout: apiVersion + '/user/logout',
+    profile_userLog: apiVersion + '/user/list',
 
     // Media
     media: apiVersion + '/media/upload',

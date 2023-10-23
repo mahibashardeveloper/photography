@@ -17,6 +17,11 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link" :to="{name: 'explore'}" active-class="active">
+                            Explore
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link" :to="{name: 'login'}" active-class="active">
                             Login
                         </router-link>
@@ -29,11 +34,6 @@
                             <li>
                                 <router-link class="dropdown-item" :to="{name: 'portfolio'}" active-class="active">
                                     portfolio
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link class="dropdown-item" :to="{name: 'loginHistory'}" active-class="active">
-                                    Logo History
                                 </router-link>
                             </li>
                             <li>

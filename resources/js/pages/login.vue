@@ -12,18 +12,28 @@
                     </div>
                     <div class="text-secondary">Welcome to your account</div>
                 </div>
+
+                <div class="alert alert-danger mb-3 text-center" v-if="error !== null && error.error !== undefined" v-text="error.error"></div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" name="email" id="email" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                    <input type="text" name="email" id="email" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.email" autocomplete="off">
+                    <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                 </div>
+
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                    <input type="password" name="password" id="password" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.password" autocomplete="off">
+                    <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                 </div>
+
                 <div class="mb-3">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
-                        <button type="submit" class="btn btn-outline-dark py-2 px-4">
+                        <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === false">
                             Login
+                        </button>
+                        <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="accessLoading === true">
+                            Loading...
                         </button>
                         <router-link :to="{name: 'forget'}" class="text-decoration-none text-danger">
                             Forget Password ?
@@ -45,28 +55,40 @@
 
 <script>
 
+    import apiService from "../services/apiServices.js";
+    import apiRoutes from "../services/apiRoutes.js";
+
     export default {
-
-        data(){
-
-            return{
-
+        data() {
+            return {
+                UserInfo: window.core.UserInfo,
+                accessLoading: false,
+                loginParam: {
+                    email: '',
+                    password: '',
+                },
+                error: null,
             }
-
         },
-
-        mounted() {
-
-
-
+        mounted() {},
+        created() {
+            if(this.UserInfo != null){
+                this.$router.push({name: 'dashboard'});
+            }
         },
-
         methods: {
-
-
-
+            login(){
+                this.accessLoading = true;
+                apiService.POST(apiRoutes.login, this.loginParam, (res) =>{
+                    this.accessLoading = false;
+                    if(res.status === 200){
+                        this.$toast.success(res.msg, {position: "top-right"});
+                    }else{
+                        this.error = res.errors;
+                    }
+                });
+            }
         }
-
     }
 
 </script>

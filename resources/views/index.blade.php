@@ -9,6 +9,15 @@
 </head>
 <body id="app">
     <app></app>
+    <script>
+        window.core = {
+            @if(auth()->check())
+            UserInfo: {!! auth()->user() !!},
+            @else
+            UserInfo: null
+            @endif
+        }
+    </script>
 </body>
 @vite('resources/js/app.js')
 </html>
