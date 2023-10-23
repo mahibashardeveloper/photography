@@ -85,6 +85,7 @@
                         this.$toast.success('your login has been successful.', {
                             position: "top-right"
                         });
+                        window.location.reload();
                     }else{
                         this.error = res.errors;
                     }

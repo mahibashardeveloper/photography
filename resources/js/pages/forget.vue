@@ -19,7 +19,7 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-if="forgetParam.email" autocomplete="off">
+                        <input id="email" type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-model="forgetParam.email" autocomplete="off">
                         <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                     </div>
 

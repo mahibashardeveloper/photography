@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <form @submit.prevent="updatePassword" class="col-12 col-md-6 p-3 border bg-white rounded-3" v-if="tab === 1">
+    <form @submit.prevent="updatePassword" class="col-12 col-lg-6 p-3 border bg-white rounded-3" v-if="tab === 1">
         <div class="mb-3">
             <label for="current_password" class="form-label">Current Password</label>
             <input type="password" name="current_password" class="form-control shadow-none border-secondary-subtle" v-model="passwordParam.current_password" autocomplete="off">
@@ -33,12 +33,14 @@
         <button type="button" class="btn btn-dark" v-if="updateProfileLoading === true">Loading...</button>
     </form>
 
-    <form @submit.prevent="updateProfile" class="col-12 col-md-6 p-3 border bg-white rounded-3" v-if="tab === 2">
+    <form @submit.prevent="updateProfile" class="col-12 col-lg-6 p-3 border bg-white rounded-3" v-if="tab === 2">
         <div class="mb-3">
             <div class="d-flex justify-content-center mb-3">
-                <div class="user-avatar overflow-hidden">
-                    <img class="img-fluid" v-if="!editParam.avatar" :src="'/images/avatar.png'" alt="profile-dummy">
-                    <img class="img-fluid" v-if="editParam.avatar !== null" :src="editParam.avatarFilePath" alt="profile">
+                <div class="user-avatar overflow-hidden" v-if="!editParam.avatar">
+                    <img :src="'/images/avatar.png'" alt="profile-dummy">
+                </div>
+                <div class="user-avatar overflow-hidden" v-if="editParam.avatar !== null">
+                    <img :src="editParam.avatarFilePath" alt="profile">
                 </div>
             </div>
             <div class="text-center">
