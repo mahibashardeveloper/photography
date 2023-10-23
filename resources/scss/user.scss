@@ -12,25 +12,28 @@
     }
     .user-post-image {
         width: 100%;
-        min-height: 250px;
+        height: 250px;
         display: flex;
         justify-content: center;
         align-items: center;
         border: 1px solid var(--light);
         transition: 0.3s all ease-in-out;
         cursor: pointer;
+        object-fit: cover;
         &:hover {
             background-color: var(--light);
             transition: 0.3s all ease-in-out;
         }
     }
     .image-size {
+        height: 100%;
         font-size: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         img{
+            height: 450px;
             background-position: center;
             object-fit: contain;
         }

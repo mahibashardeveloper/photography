@@ -28,7 +28,7 @@
                     </li>
                     <li class="nav-item dropdown" v-if="profile_data !== null">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img :src="'/images/avatar.png'" class="img-fluid" alt="avatar" v-if="profile_data.avatar === null">
+                            <img :src="'https://ui-avatars.com/api/?name='+profile_data.name" class="img-fluid" alt="avatar" v-if="profile_data.avatar === null">
                             <img :src="profile_data.avatarFilePath" class="img-fluid" alt="avatar" v-if="profile_data.avatar !== null">
                             <span class="ms-2">
                                 {{profile_data.name}}
@@ -99,7 +99,6 @@
                 this.profileDataLoading = true;
                 apiServices.GET(apiRoutes.user_details, (res) => {
                     this.profileDataLoading = false;
-                    console.log(res)
                     if (res.status === 200) {
                         this.profile_data = res.data;
                         this.profile_data.avatarFilePath = res.data.media.full_file_path

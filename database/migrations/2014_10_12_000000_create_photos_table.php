@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->tinyInteger('status')->default(1)->comment('1. public, 2. private');
-            $table->string('photo')->nullable();
+            $table->string('avatar')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

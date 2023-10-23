@@ -15,7 +15,7 @@ class PhotoService extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'photo' => 'required',
+                    'avatar' => 'required',
                     'title' => 'required',
                     'status' => 'required',
                 ]
@@ -26,7 +26,7 @@ class PhotoService extends BaseController
             $user_id = Auth::id();
             $photography = new Photo();
             $photography -> user_id = $user_id;
-            $photography -> photo = $request->photo;
+            $photography -> avatar = $request->avatar;
             $photography -> title = $request->title;
             $photography -> status = $request->status;
             $photography -> save();
@@ -85,7 +85,7 @@ class PhotoService extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'photo' => 'required',
+                    'avatar' => 'required',
                     'title' => 'required',
                     'status' => 'required',
                 ]
@@ -97,7 +97,7 @@ class PhotoService extends BaseController
             if($photography == null){
                 return ['status' => 500, 'errors' => 'data not found'];
             }
-            $photography->photo = $request->photo;
+            $photography->avatar = $request->avatar;
             $photography->title = $request->title;
             $photography->status = $request->status;
             $photography->save();

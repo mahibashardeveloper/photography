@@ -12,13 +12,13 @@ class Photo extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
-        'photo',
+        'avatar',
         'title',
         'status',
     ];
 
     public function media(){
-        return $this->hasOne(Media::class, 'id' , 'photo');
+        return $this->hasOne(Media::class, 'id' , 'avatar');
     }
 
 }

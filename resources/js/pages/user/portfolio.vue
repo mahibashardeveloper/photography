@@ -32,10 +32,11 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" v-if="tableData.length > 0 && loading === false">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 h-100" v-if="tableData.length > 0 && loading === false">
 
-        <div class="p-3" v-for="each in tableData">
-            <div class="bg-white border border-secondary-subtle position-relative">
+        <div class="p-3 h-100" v-for="each in tableData">
+            <div class="bg-white border border-secondary-subtle position-relative h-100">
+
                 <div class="position-absolute start-0 top-0 w-100 p-3 d-flex justify-content-between align-items-center z-3">
 
                     <div class="text-white">
@@ -63,12 +64,12 @@
 
                 </div>
 
-                <div class="image-size position-relative">
-                    <img :src="'/storage/media/image/'+each.photo" :alt="each.photo">
+                <div class="image-size position-relative h-100">
+                    <img :src="each.avatar" :alt="each.avatar">
                     <div class="bg-dark bg-opacity-50 w-100 h-100 position-absolute"></div>
                 </div>
 
-                <div class="position-absolute bottom-0 start-0 p-2 text-truncate col-12 text-white z-3">
+                <div class="position-absolute bottom-0 start-0 p-3 text-truncate col-12 text-white z-3">
                     Title: {{each.title}}
                 </div>
 
@@ -144,12 +145,12 @@
                         <div class="modal-body">
                             <div class="mb-3 col-12">
                                 <label for="photo-upload" class="form-label fw-bold mb-3">Share a photo</label>
-                                <label for="upload" id="photo-upload" class="user-post-image" v-if="photoParam.photo === null">
+                                <label for="upload" id="photo-upload" class="user-post-image" v-if="photoParam.avatar === null">
                                     <input id="upload" type="file" class="d-none" @change="attachFile($event)">
                                     <i class="bi bi-camera-fill me-2"></i> Upload a Photo
                                 </label>
-                                <img class="img-fluid user-post-image" v-if="photoParam.photo !== null" :src="'/storage/media/image/'+photoParam.photo" alt="profile">
-                                <div class="error-text" v-if="error != null && error.photo !== undefined" v-text="error.photo[0]"></div>
+                                <img class="img-fluid user-post-image" v-if="photoParam.avatar !== null" :src="photoParam.avatar" alt="profile">
+                                <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
@@ -204,11 +205,11 @@
         data(){
 
             return{
-                photo: [],
+                listData: [],
                 loading: false,
                 createLoading: false,
                 deleteLoading: false,
-                photoParam: { title: '', photo: null, status: 1 },
+                photoParam: { title: '', avatar: null, status: 1 },
                 deleteParam: { ids: [] },
                 tableData: [],
                 formData: { limit: 10, page: 1 },
@@ -219,8 +220,6 @@
                 error: null,
                 responseData: null,
                 total_data: 0,
-                selected: [],
-
             }
 
         },
@@ -244,7 +243,6 @@
                         this.$toast.success(res.message, {position: "bottom-right"});
                         this.deleteModal(2, '')
                         this.list();
-                        this.selected = [];
                     } else {
                         this.error = res.errors;
                     }
@@ -257,8 +255,7 @@
                     const myModal = new bootstrap.Modal("#deleteModal", {keyboard: false, backdrop: 'static'});
                     myModal.show();
                 } else {
-                    this.selected = [];
-                    this.photoParam = { id: '', title: '', photo: '', status: '' };
+                    this.photoParam = { id: '', title: '', avatar: '', status: '' };
                     this.current_page = 1;
                     let myModalEl = document.getElementById('deleteModal');
                     let modal = bootstrap.Modal.getInstance(myModalEl)
@@ -268,7 +265,7 @@
 
             manageModal(type, data = null) {
                 this.error = null;
-                this.photoParam = { id: '', title: '', photo: null, status: 1 };
+                this.photoParam = { id: '', title: '', avatar: null, status: 1 };
                 if (type === 1) {
                     this.getPhoto();
                     if (data !== null) {
@@ -286,7 +283,7 @@
             getPhoto() {
                 apiService.POST(apiRoute.photo_list, '', (res) => {
                     if (res.status === 200) {
-                        this.photo = res.data.data
+                        this.listData = res.data.data;
                     }
                 })
             },
@@ -320,7 +317,6 @@
                         this.$toast.success(res.message, {position: "bottom-right"});
                         this.manageModal(2, null);
                         this.list();
-                        this.selected = [];
                     } else {
                         this.error = res.errors;
                     }
@@ -337,7 +333,6 @@
                         this.$toast.success(res.message, {position: "bottom-right"});
                         this.manageModal(2, null);
                         this.list();
-                        this.selected = [];
                     } else {
                         this.error = res.errors;
                     }
@@ -349,9 +344,10 @@
                 this.formData.page = this.current_page;
                 apiService.POST(apiRoute.photo_list, this.formData, (res) => {
                     this.loading = false;
-                    this.selected = [];
+                    console.log(res)
                     if (res.status === 200) {
                         this.tableData = res.data.data;
+                        this.tableData.avatarFilePath = res.data.media.full_file_path
                         this.total_data = res.data.total;
                         this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
                         this.current_page = res.data.current_page;
@@ -386,8 +382,9 @@
                 formData.append("media_type", 1);
                 apiService.UPLOAD(apiRoute.media, formData, (res) => {
                     event.target.value = '';
+                    console.log(res)
                     if (res.status === 200) {
-                        this.photoParam.photo = res.data.file_path
+                        this.photoParam.avatar = res.data.full_file_path;
                     }
                 })
             },
