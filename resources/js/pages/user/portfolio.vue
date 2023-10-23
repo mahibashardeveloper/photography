@@ -4,9 +4,16 @@
         Portfolio
     </div>
 
-    <a href="javascript:void(0)" class="btn btn-outline-dark mb-3" @click="manageModal(1, null)">
-        Upload Photo
-    </a>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="javascript:void(0)" class="btn btn-outline-dark mb-3" @click="manageModal(1, null)">
+                Upload Photo
+            </a>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Search Here anything" v-model="formData.q" @keyup="SearchData">
+        </div>
+    </div>
 
     <div v-if="loading === true">
         <h6 class="card-text placeholder-glow">
@@ -39,7 +46,8 @@
 
                 <div class="position-absolute start-0 top-0 w-100 p-3 d-flex justify-content-between align-items-center z-3">
 
-                    <div class="text-white">
+                    <div class="text-white badge bg-dark p-2 fw-normal">
+                        Status:
                         <span v-if="each.status === 1">Public</span>
                         <span v-if="each.status === 2">Private</span>
                     </div>
@@ -66,11 +74,10 @@
 
                 <div class="image-size position-relative h-100">
                     <img :src="each.avatar" :alt="each.avatar">
-                    <div class="bg-dark bg-opacity-50 w-100 h-100 position-absolute"></div>
                 </div>
 
-                <div class="position-absolute bottom-0 start-0 p-3 text-truncate col-12 text-white z-3">
-                    Title: {{each.title}}
+                <div class="p-3 text-center">
+                    {{each.title}}
                 </div>
 
             </div>
@@ -212,7 +219,7 @@
                 photoParam: { title: '', avatar: null, status: 1 },
                 deleteParam: { ids: [] },
                 tableData: [],
-                formData: { limit: 10, page: 1 },
+                formData: { limit: 12, page: 1 },
                 total_pages: 0,
                 current_page: 0,
                 buttons: [],
@@ -347,7 +354,6 @@
                     console.log(res)
                     if (res.status === 200) {
                         this.tableData = res.data.data;
-                        this.tableData.avatarFilePath = res.data.media.full_file_path
                         this.total_data = res.data.total;
                         this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
                         this.current_page = res.data.current_page;
@@ -373,6 +379,13 @@
             pageChange(page) {
                 this.current_page = page;
                 this.list();
+            },
+
+            SearchData() {
+                clearTimeout(this.searchTimeout);
+                this.searchTimeout = setTimeout(() => {
+                    this.list();
+                }, 500);
             },
 
             attachFile(event) {

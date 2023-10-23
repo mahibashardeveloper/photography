@@ -27,7 +27,7 @@
                         <button type="submit" class="btn btn-outline-dark" v-if="forgetLoading === false">
                             Forget
                         </button>
-                        <button type="button" class="btn btn-outline-dark" v-if="forgetLoading === true">
+                        <button type="button" class="btn btn-dark" v-if="forgetLoading === true">
                             Loading...
                         </button>
                     </div>
@@ -87,7 +87,7 @@
                         <button type="submit" class="btn btn-outline-dark" v-if="resetLoading === false">
                             Reset
                         </button>
-                        <button type="button" class="btn btn-outline-dark" v-if="resetLoading === true">
+                        <button type="button" class="btn btn-dark" v-if="resetLoading === true">
                             Loading...
                         </button>
                     </div>

@@ -36,7 +36,7 @@
                     <button type="submit" class="btn btn-outline-dark" v-if="accessLoading === false">
                         Registration
                     </button>
-                    <button type="button" class="btn btn-outline-dark" v-if="accessLoading === true">
+                    <button type="button" class="btn btn-dark" v-if="accessLoading === true">
                         Loading...
                     </button>
                 </div>

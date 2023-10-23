@@ -29,7 +29,7 @@
             <input type="password" name="password_confirmation" class="form-control" v-model="passwordParam.password_confirmation" autocomplete="off">
             <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
         </div>
-        <button type="submit" class="btn btn-dark" v-if="updateProfileLoading === false">Update Password</button>
+        <button type="submit" class="btn btn-outline-dark" v-if="updateProfileLoading === false">Update Password</button>
         <button type="button" class="btn btn-dark" v-if="updateProfileLoading === true">Loading...</button>
     </form>
 
@@ -62,7 +62,7 @@
             <input id="email" type="email" name="email" class="form-control" v-model="editParam.email" autocomplete="off">
             <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
         </div>
-        <button type="submit" class="btn btn-dark" v-if="updateProfileLoading === false">Update Profile</button>
+        <button type="submit" class="btn btn-outline-dark" v-if="updateProfileLoading === false">Update Profile</button>
         <button type="button" class="btn btn-dark" v-if="updateProfileLoading === true">Loading...</button>
     </form>
 
