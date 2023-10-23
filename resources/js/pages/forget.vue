@@ -19,7 +19,7 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input id="email" type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-model="forgetParam.email" autocomplete="off">
+                        <input id="email" type="email" name="email" class="form-control" v-model="forgetParam.email" autocomplete="off">
                         <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                     </div>
 
@@ -64,22 +64,22 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" disabled class="form-control shadow-none border-secondary-subtle" v-model="resetParam.email" autocomplete="off">
+                        <input type="email" name="email" disabled class="form-control" v-model="resetParam.email" autocomplete="off">
                         <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="code" class="form-label">Code</label>
-                        <input type="text" name="code" class="form-control shadow-none border-secondary-subtle" v-model="resetParam.code" autocomplete="off">
+                        <input type="text" name="code" class="form-control" v-model="resetParam.code" autocomplete="off">
                         <div class="error-text" v-if="error != null && error.code !== undefined" v-text="error.code[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="new_password" class="form-label">New Password</label>
-                        <input id="new_password" type="password" name="new_password" class="form-control shadow-none border-secondary-subtle" v-model="resetParam.password" autocomplete="off">
+                        <input id="new_password" type="password" name="new_password" class="form-control" v-model="resetParam.password" autocomplete="off">
                         <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="confirm_password" class="form-label">Confirm Password</label>
-                        <input id="confirm_password" type="password" name="confirm_password" class="form-control shadow-none border-secondary-subtle" v-model="resetParam.password_confirmation" autocomplete="off">
+                        <input id="confirm_password" type="password" name="confirm_password" class="form-control" v-model="resetParam.password_confirmation" autocomplete="off">
                         <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
                     </div>
 

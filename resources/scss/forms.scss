@@ -7,8 +7,12 @@
 
 .form-control{
     line-height: 35px;
+    box-shadow: 0 0 0 0 !important;
+    border-color: var(--border-color);
 }
 
 .form-select{
     line-height: 35px;
+    box-shadow: 0 0 0 0 !important;
+    border-color: var(--border-color);
 }

@@ -7,7 +7,7 @@
             </div>
             <div class="col-8 col-md-6 col-lg-4 py-3">
                 <div class="position-relative">
-                    <input type="text" class="form-control shadow-none border border-secondary-subtle ps-5" placeholder="Search Here anything">
+                    <input type="text" class="form-control ps-5" placeholder="Search Here anything">
                     <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                         <i class="bi bi-search"></i>
                     </div>

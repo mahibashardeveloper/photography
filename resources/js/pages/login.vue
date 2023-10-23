@@ -17,13 +17,13 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" name="email" id="email" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.email" autocomplete="off">
+                    <input type="text" name="email" id="email" class="form-control" v-model="loginParam.email" autocomplete="off">
                     <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.password" autocomplete="off">
+                    <input type="password" name="password" id="password" class="form-control" v-model="loginParam.password" autocomplete="off">
                     <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                 </div>
 

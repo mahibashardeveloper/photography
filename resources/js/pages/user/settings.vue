@@ -16,17 +16,17 @@
     <form @submit.prevent="updatePassword" class="col-12 col-lg-6 p-3 border bg-white rounded-3" v-if="tab === 1">
         <div class="mb-3">
             <label for="current_password" class="form-label">Current Password</label>
-            <input type="password" name="current_password" class="form-control shadow-none border-secondary-subtle" v-model="passwordParam.current_password" autocomplete="off">
+            <input type="password" name="current_password" class="form-control" v-model="passwordParam.current_password" autocomplete="off">
             <div class="error-text" v-if="error != null && error.current_password !== undefined" v-text="error.current_password[0]"></div>
         </div>
         <div class="mb-3">
             <label for="new_password" class="form-label">New Password</label>
-            <input type="password" name="new_password" class="form-control shadow-none border-secondary-subtle" v-model="passwordParam.password" autocomplete="off">
+            <input type="password" name="new_password" class="form-control" v-model="passwordParam.password" autocomplete="off">
             <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
         </div>
         <div class="mb-3">
             <label for="password_confirmation" class="form-label">Confirm Password</label>
-            <input type="password" name="password_confirmation" class="form-control shadow-none border-secondary-subtle" v-model="passwordParam.password_confirmation" autocomplete="off">
+            <input type="password" name="password_confirmation" class="form-control" v-model="passwordParam.password_confirmation" autocomplete="off">
             <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
         </div>
         <button type="submit" class="btn btn-dark" v-if="updateProfileLoading === false">Update Password</button>
@@ -54,12 +54,12 @@
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input id="name" type="text" name="name" class="form-control shadow-none border-secondary-subtle" v-model="editParam.name" autocomplete="off">
+            <input id="name" type="text" name="name" class="form-control" v-model="editParam.name" autocomplete="off">
             <div class="error-text" v-if="error != null && error.name !== undefined" v-text="error.name[0]"></div>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input id="email" type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-model="editParam.email" autocomplete="off">
+            <input id="email" type="email" name="email" class="form-control" v-model="editParam.email" autocomplete="off">
             <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
         </div>
         <button type="submit" class="btn btn-dark" v-if="updateProfileLoading === false">Update Profile</button>

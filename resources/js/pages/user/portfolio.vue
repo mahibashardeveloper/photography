@@ -92,7 +92,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input id="title" type="text" name="title" class="form-control shadow-none border-secondary-subtle">
+                                <input id="title" type="text" name="title" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Visibility Status</label>

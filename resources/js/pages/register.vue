@@ -14,22 +14,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input id="name" type="text" name="name" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.name" autocomplete="off">
+                    <input id="name" type="text" name="name" class="form-control" v-model="registerParam.name" autocomplete="off">
                     <div class="error-text" v-if="error != null && error.name !== undefined" v-text="error.name[0]"></div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" type="text" name="email" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.email" autocomplete="off">
+                    <input id="email" type="text" name="email" class="form-control" v-model="registerParam.email" autocomplete="off">
                     <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" name="password" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.password" autocomplete="off">
+                    <input id="password" type="password" name="password" class="form-control" v-model="registerParam.password" autocomplete="off">
                     <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                 </div>
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">Confirm Password</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" class="form-control shadow-none border-secondary-subtle" v-model="registerParam.password_confirmation" autocomplete="off">
+                    <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" v-model="registerParam.password_confirmation" autocomplete="off">
                     <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
                 </div>
                 <div class="mb-3">

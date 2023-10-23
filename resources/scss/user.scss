@@ -37,9 +37,10 @@
     }
     .dropdown{
         .dropdown-menu{
-            --bs-dropdown-min-width: 120px;
+            --bs-dropdown-min-width: 150px;
             padding: 10px;
             .dropdown-item{
+                padding: 10px 20px;
                 border-radius: 6px;
                 &:hover, &.active{
                     background-color: var(--light);
