@@ -34,12 +34,12 @@ Route::group(
 --------------------------- */
 
 Route::group(
-    ['middleware' => ['UserAuthReq'], 'prefix' => 'user'],
+    ['middleware' => ['UserAuthReq'], 'prefix' => 'profile'],
     function () {
-        Route::get('/details', [UserController::class, 'user_details'])->name('User.Details');
-        Route::post('/update', [UserController::class, 'user_profile_update'])->name('User.Update');
-        Route::post('/password', [UserController::class, 'user_password_update'])->name('User.Password');
-        Route::get('/logout', [UserController::class, 'user_logout'])->name('User.Logout');
+        Route::get('/details', [UserController::class, 'user_details'])->name('User.Profile.Details');
+        Route::post('/update', [UserController::class, 'user_profile'])->name('User.Profile.update');
+        Route::post('/password', [UserController::class, 'user_password'])->name('User.Profile.Password');
+        Route::get('/logout', [UserController::class, 'user_logout'])->name('User.Profile.Logout');
     }
 );
 

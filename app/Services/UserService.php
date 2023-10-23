@@ -115,7 +115,8 @@ class UserService extends BaseController
         }
     }
 
-    public static function user_details($request){
+    public static function user_details($request)
+    {
         try {
             $user_id = Auth::id();
             $user = User::with('media')->where('id', $user_id)->first();
@@ -125,7 +126,8 @@ class UserService extends BaseController
         }
     }
 
-    public static function user_profile_update($request){
+    public static function user_update($request)
+    {
         try {
             $validator = Validator::make(
                 $request->all(),
@@ -148,12 +150,12 @@ class UserService extends BaseController
         }
     }
 
-    public static function user_password_update($request){
+    public static function user_password($request)
+    {
         try {
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'current_password' => 'required|min:6',
                     'password' => 'required|min:6|confirmed',
                 ]
             );
@@ -173,7 +175,8 @@ class UserService extends BaseController
         }
     }
 
-    public static function user_logout($request){
+    public static function user_logout($request)
+    {
         try {
             Auth::logout();
             return ['status' => 200, 'msg' => 'logout successfully'];

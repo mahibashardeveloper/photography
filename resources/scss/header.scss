@@ -28,7 +28,23 @@
             }
 
             .nav-item{
+                display: flex;
+                align-items: center;
+
+                @media screen and (max-width: 991px) {
+                    display: block;
+                }
+
                 .nav-link{
+
+                    img{
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        overflow: hidden;
+                        border-radius: 50%;
+                    }
+
                     &.active{
                         font-weight: bold;
                     }
@@ -37,6 +53,7 @@
                 .dropdown-menu{
                     padding: 0;
                     overflow: hidden;
+
                     .dropdown-item{
                         padding: 10px 20px;
 

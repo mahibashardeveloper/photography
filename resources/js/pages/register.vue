@@ -96,10 +96,10 @@
                         this.$toast.success('Your registration has been successful.', {
                             position: "top-right"
                         });
-                        if(User_info === null) {
-                            this.registerType = 2;
-                        }else{
+                        if(this.UserInfo !== null) {
                             this.$router.push({name: 'portfolio'});
+                        }else{
+                            this.registerType = 2;
                         }
                     }else{
                         this.error = res.errors;

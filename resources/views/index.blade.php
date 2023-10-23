@@ -7,8 +7,10 @@
     <title>Photography</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body id="app">
-    <app></app>
+<body>
+    <div id="app">
+        <app></app>
+    </div>
     <script>
         window.core = {
             @if(auth()->check())

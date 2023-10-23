@@ -130,6 +130,7 @@
     export default {
         data(){
             return{
+                UserInfo: window.core.UserInfo,
                 pageType: 1,
                 resetLoading: false,
                 resetParam: {

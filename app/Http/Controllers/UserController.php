@@ -34,13 +34,13 @@ class UserController extends BaseController
         return response()->json($rv, 200);
     }
 
-    public function user_profile_update(Request $request){
-        $rv = UserService::user_profile_update($request);
+    public function user_profile(Request $request){
+        $rv = UserService::user_update($request);
         return response()->json($rv, 200);
     }
 
-    public function user_password_update(Request $request){
-        $rv = UserService::user_password_update($request);
+    public function user_password(Request $request){
+        $rv = UserService::user_password($request);
         return response()->json($rv, 200);
     }
 
