@@ -21,14 +21,14 @@
                             Explore
                         </router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="profile_data === null">
                         <router-link class="nav-link" :to="{name: 'login'}" active-class="active">
                             Login
                         </router-link>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" v-if="profile_data !== null">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mahi Bashar Akash
+                            <img :src="profile_data.avatar" alt=""> Mahi Bashar Akash
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -45,7 +45,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                <a class="dropdown-item" href="javascript:void(0)" @click="logout">
                                     Logout
                                 </a>
                             </li>
@@ -60,28 +60,55 @@
 
 <script>
 
-export default {
+    import apiServices from "../../services/apiServices.js";
+    import apiRoutes from "../../services/apiRoutes.js";
 
-    data(){
+    export default {
 
-        return{
+        data(){
+
+            return{
+                profile_data: null,
+                profileDataLoading: false,
+                logoutLoading: false,
+                core:window.core
+            }
+
+        },
+
+        mounted() {
+
+            if(this.core.UserInfo != null){
+                this.getProfile();
+            }
+
+        },
+
+        methods: {
+
+            getProfile() {
+                this.profileDataLoading = true;
+                apiServices.GET(apiRoutes.user_details, (res) => {
+                    this.profileDataLoading = false;
+                    if (res.status === 200) {
+                        this.profile_data = res.data;
+                        // this.profile_data = res
+                    }
+                })
+            },
+
+            logout() {
+                this.logoutLoading = true;
+                apiServices.GET(apiRoutes.user_logout, (res) => {
+                    this.logoutLoading = false;
+                    if (res.status === 200) {
+                        window.location.reload();
+                    }
+                })
+            },
 
         }
 
-    },
-
-    mounted() {
-
-
-
-    },
-
-    methods: {
-
-
-
     }
-
-}
 
 </script>

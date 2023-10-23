@@ -8,7 +8,7 @@
 
             <div v-if="pageType === 1">
 
-                <form class="border border-secondary-subtle p-4 rounded-3">
+                <form @submit.prevent="forget" class="border border-secondary-subtle p-4 rounded-3">
 
                     <div class="mb-4">
                         <div class="h4 mb-3">
@@ -19,12 +19,16 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                        <input type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-if="forgetParam.email" autocomplete="off">
+                        <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                     </div>
 
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-outline-dark py-2 px-4">
+                        <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="forgetLoading === false">
                             Forget
+                        </button>
+                        <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="forgetLoading === true">
+                            Loading...
                         </button>
                     </div>
 
@@ -51,7 +55,7 @@
                     </a>
                 </div>
 
-                <form class="border border-secondary-subtle p-4 rounded-3">
+                <form @submit.prevent="reset" class="border border-secondary-subtle p-4 rounded-3">
                     <div class="mb-4">
                         <div class="h4 mb-3">
                             User Reset Password
@@ -60,24 +64,31 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" disabled class="form-control shadow-none border-secondary-subtle" value="mahi bashar akash" required autocomplete="off">
+                        <input type="email" name="email" disabled class="form-control shadow-none border-secondary-subtle" v-model="resetParam.email" autocomplete="off">
+                        <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="code" class="form-label">Code</label>
-                        <input type="text" name="code" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                        <input type="text" name="code" class="form-control shadow-none border-secondary-subtle" v-model="resetParam.code" autocomplete="off">
+                        <div class="error-text" v-if="error != null && error.code !== undefined" v-text="error.code[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="new_password" class="form-label">New Password</label>
-                        <input id="new_password" type="password" name="new_password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                        <input id="new_password" type="password" name="new_password" class="form-control shadow-none border-secondary-subtle" v-model="resetParam.password" autocomplete="off">
+                        <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="confirm_password" class="form-label">Confirm Password</label>
-                        <input id="confirm_password" type="password" name="confirm_password" class="form-control shadow-none border-secondary-subtle" required autocomplete="off">
+                        <input id="confirm_password" type="password" name="confirm_password" class="form-control shadow-none border-secondary-subtle" v-model="resetParam.password_confirmation" autocomplete="off">
+                        <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
                     </div>
 
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-outline-dark py-2 px-4">
+                        <button type="submit" class="btn btn-outline-dark py-2 px-4" v-if="resetLoading === false">
                             Reset
+                        </button>
+                        <button type="button" class="btn btn-outline-dark py-2 px-4" v-if="resetLoading === true">
+                            Loading...
                         </button>
                     </div>
 
@@ -93,6 +104,19 @@
 
             </div>
 
+            <div v-if="pageType === 3">
+
+                <div class="text-center py-5 mb-4 border rounded-3 border-secondary-subtle">
+                    <div class="mb-3">
+                        Your account has been reset successfully
+                    </div>
+                    <router-link :to="{name: 'login'}" class="text-decoration-none small">
+                        login
+                    </router-link>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
@@ -100,28 +124,66 @@
 
 <script>
 
+    import apiService from "../services/apiServices.js";
+    import apiRoutes from "../services/apiRoutes.js";
+
     export default {
-
         data(){
-
             return{
                 pageType: 1,
+                resetLoading: false,
+                resetParam: {
+                    email: '',
+                    code: '',
+                    password: '',
+                    password_confirmation: ''
+                },
+                error: null,
+                forgetLoading: false,
+                forgetParam: {
+                    email: ''
+                },
             }
-
         },
-
-        mounted() {
-
-
-
+        mounted() {},
+        created() {
+            if(this.UserInfo != null){
+                this.$router.push({name: 'portfolio'});
+            }
         },
-
         methods: {
-
-
-
+            forget() {
+                this.forgetLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.forget, this.forgetParam, (res) => {
+                    this.forgetLoading = false
+                    if (res.status === 200) {
+                        this.pageType = 2;
+                        this.resetParam.email = this.forgetParam.email;
+                        this.$toast.success('The verification code has been sent to your email.', {
+                            position: "top-right"
+                        });
+                    } else {
+                        this.error = res.error;
+                    }
+                })
+            },
+            reset() {
+                this.resetLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.reset, this.resetParam, (res) => {
+                    this.resetLoading = false;
+                    if (res.status === 200) {
+                        this.$toast.success('Password has been reset successfully.', {
+                            position: "top-right"
+                        });
+                        this.pageType = 3;
+                    } else {
+                        this.error = res.error;
+                    }
+                })
+            },
         }
-
     }
 
 </script>

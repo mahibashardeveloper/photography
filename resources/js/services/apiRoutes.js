@@ -9,11 +9,10 @@ const apiRoutes = {
     reset: apiVersion + '/auth/reset',
 
     // Profile
-    profile_details: apiVersion + '/user/details',
-    profile_update: apiVersion + '/user/update',
-    profile_password: apiVersion + '/user/password',
-    profile_logout: apiVersion + '/user/logout',
-    profile_userLog: apiVersion + '/user/list',
+    user_details: apiVersion + '/user/details',
+    user_update: apiVersion + '/user/update',
+    user_password: apiVersion + '/user/password',
+    user_logout: apiVersion + '/user/logout',
 
     // Media
     media: apiVersion + '/media/upload',

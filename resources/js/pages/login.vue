@@ -5,7 +5,7 @@
             <img :src="'/images/photography-background.png'" class="img-fluid" alt="photographer-background">
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-3">
-            <form class="border border-secondary-subtle p-4 rounded-3">
+            <form @submit.prevent="login" class="border border-secondary-subtle p-4 rounded-3">
                 <div class="mb-4">
                     <div class="h4 mb-3">
                         User Login
@@ -73,7 +73,7 @@
         mounted() {},
         created() {
             if(this.UserInfo != null){
-                this.$router.push({name: 'dashboard'});
+                this.$router.push({name: 'portfolio'});
             }
         },
         methods: {
@@ -82,7 +82,9 @@
                 apiService.POST(apiRoutes.login, this.loginParam, (res) =>{
                     this.accessLoading = false;
                     if(res.status === 200){
-                        this.$toast.success(res.msg, {position: "top-right"});
+                        this.$toast.success('your login has been successful.', {
+                            position: "top-right"
+                        });
                     }else{
                         this.error = res.errors;
                     }

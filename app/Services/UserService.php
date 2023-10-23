@@ -52,7 +52,8 @@ class UserService extends BaseController
             }
             $credential = ['email' => $request->email, 'password' => $request->password];
             if (Auth::attempt($credential, $request->remember)) {
-                return ['status' => 200, 'data' => Auth::user()];
+                $user = Auth::user();
+                return ['status' => 200, 'data' => $user];
             } else {
                 return ['status' => 500, 'errors' => ['error' => 'Invalid Credentials! Please try again']];
             }

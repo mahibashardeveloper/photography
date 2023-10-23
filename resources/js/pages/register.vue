@@ -5,7 +5,7 @@
             <img :src="'/images/photography-background.png'" class="img-fluid" alt="photographer-background">
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-3">
-            <form class="border border-secondary-subtle p-4 rounded-3" v-if="registerType === 1">
+            <form @submit.prevent="register" class="border border-secondary-subtle p-4 rounded-3" v-if="registerType === 1">
                 <div class="mb-4">
                     <div class="h4 mb-3">
                         New User Registration
@@ -78,12 +78,13 @@
                     password_confirmation: '',
                 },
                 error: null,
+                UserInfo: window.core.UserInfo,
             }
         },
         mounted() {},
         created() {
             if(this.UserInfo != null){
-                this.$router.push({name: 'dashboard'});
+                this.$router.push({name: 'portfolio'});
             }
         },
         methods: {
@@ -92,7 +93,14 @@
                 apiService.POST(apiRoutes.register, this.registerParam, (res) => {
                     this.accessLoading = false;
                     if(res.status === 200){
-                        this.registerType = 2;
+                        this.$toast.success('Your registration has been successful.', {
+                            position: "top-right"
+                        });
+                        if(User_info === null) {
+                            this.registerType = 2;
+                        }else{
+                            this.$router.push({name: 'portfolio'});
+                        }
                     }else{
                         this.error = res.errors;
                     }

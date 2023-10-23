@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
-            $table->string('avatar')->nullable();
-            $table->string('email_verified_at')->nullable();
-            $table->string('verified_token')->nullable();
-            $table->bigInteger('reset_code')->nullable();
+            $table->string('title');
+            $table->tinyInteger('status')->default(1)->comment('1. public, 2. private');
+            $table->string('photo')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('photos');
     }
 };
