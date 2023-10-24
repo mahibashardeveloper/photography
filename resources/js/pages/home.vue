@@ -92,7 +92,7 @@
         <div class="h1 fw-bold pb-3 text-center">Photography Powerful Features For Your Website</div>
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         Ready-to-use blocks
                     </div>
@@ -102,7 +102,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         Great Customer Support
                     </div>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         submit Photo on website
                     </div>
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         Analytics
                     </div>
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         SEO-optimized
                     </div>
@@ -142,7 +142,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         Reliable hosting
                     </div>
@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         publish online
                     </div>
@@ -162,7 +162,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         Subscriptions
                     </div>
@@ -172,7 +172,7 @@
                 </div>
             </div>
             <div class="p-3">
-                <div class="border">
+                <div class="border h-100">
                     <div class="h6 p-3 border-bottom fw-bold">
                         High performance
                     </div>

@@ -43,17 +43,16 @@
     </div>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 h-100" v-if="tableData.length > 0 && loading === false">
-
         <div class="p-3 h-100" v-for="each in tableData">
-
-            <div class="bg-white border border-secondary-subtle position-relative h-100" v-if="each.status === 1">
+            <div class="bg-white position-relative h-100 shadow">
                 <div class="image-size position-relative h-100">
                     <img :src="each.avatar" :alt="each.title">
                 </div>
-                <div class="fw-bold">{{each.user_id}}</div>
+                <div class="position-absolute start-0 bottom-0 p-3">
+                    <img :src="each.user.avatar" class="global-avatar me-2" alt="avatar"> {{each.user.name}}
+                </div>
             </div>
         </div>
-
     </div>
 
     <div class="d-flex justify-content-center" v-if="tableData.length > 0 && loading === false">

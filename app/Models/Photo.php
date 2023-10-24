@@ -21,4 +21,9 @@ class Photo extends Authenticatable
         return $this->hasOne(Media::class, 'id' , 'avatar');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

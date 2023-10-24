@@ -40,7 +40,7 @@
                     <img :src="'/images/avatar.png'" alt="profile-dummy">
                 </div>
                 <div class="user-avatar overflow-hidden" v-if="editParam.avatar !== null">
-                    <img :src="editParam.avatarFilePath" alt="profile">
+                    <img :src="editParam.avatar" alt="profile">
                 </div>
             </div>
             <div class="text-center">
@@ -123,8 +123,7 @@
                 apiServices.UPLOAD(apiRoutes.media, formData, (res) => {
                     event.target.value = '';
                     if (res.status === 200) {
-                        this.editParam.avatarFilePath = res.data.full_file_path
-                        this.editParam.avatar = res.data.id
+                        this.editParam.avatar = res.data.full_file_path;
                     }
                 })
             },
