@@ -61,7 +61,7 @@
                             <img :src="each.avatar" :alt="each.title">
                         </div>
                         <div class="position-absolute start-0 bottom-0 p-3">
-                            <div class="badge bg-dark p-3">
+                            <div class="badge bg-white p-3 text-dark shadow">
                                 <img :src="'/images/avatar.png'" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar === null">
                                 <img :src="each.user.avatar" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar !== null">
                                 {{each.user.name}}
