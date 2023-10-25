@@ -83,8 +83,10 @@
                     <img :src="each.avatar" :alt="each.avatar">
                 </div>
 
-                <div class="p-3 text-center">
-                    {{each.title}}
+                <div class="p-3 position-absolute bottom-0 start-0 w-100">
+                    <div class="badge bg-dark text-white p-2 fw-normal text-truncate">
+                        Search Title - {{each.title}}
+                    </div>
                 </div>
 
             </div>

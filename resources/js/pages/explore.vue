@@ -55,19 +55,18 @@
         <!-- data section start -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 h-100" v-if="tableData.length > 0 && loading === false">
             <div class="p-3 h-100" v-for="each in tableData">
-                <a href="javascript:void(0)">
-                    <div class="bg-white position-relative h-100 shadow">
-                        <div class="image-size position-relative h-100">
-                            <img :src="each.avatar" :alt="each.title">
-                        </div>
-                        <div class="position-absolute start-0 bottom-0 p-3">
-                            <div class="badge bg-dark p-3">
-                                <img :src="each.user.avatar" class="global-avatar me-2" alt="avatar">
-                                {{each.user.name}}
-                            </div>
+                <div class="bg-white position-relative h-100 shadow">
+                    <div class="image-size position-relative h-100">
+                        <img :src="each.avatar" :alt="each.title">
+                    </div>
+                    <div class="position-absolute start-0 bottom-0 p-3">
+                        <div class="badge bg-dark p-3">
+                            <img :src="'/images/avatar.png'" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar === null">
+                            <img :src="each.user.avatar" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar !== null">
+                            {{each.user.name}}
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
         <!-- data section end -->
