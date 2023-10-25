@@ -18,6 +18,7 @@ use App\Http\Controllers\GlobalController;
     Photo Controller
 --------------------------- */
 
-Route::prefix('photo')->group( function () {
+Route::prefix('global')->group( function () {
     Route::post('/list', [GlobalController::class, 'list'])->name('Global.Photo.List');
+    Route::post('/single', [GlobalController::class, 'single'])->name('Global.Photo.Single');
 } );

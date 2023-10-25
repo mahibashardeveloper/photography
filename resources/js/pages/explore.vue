@@ -55,18 +55,20 @@
         <!-- data section start -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 h-100" v-if="tableData.length > 0 && loading === false">
             <div class="p-3 h-100" v-for="each in tableData">
-                <div class="bg-white position-relative h-100 shadow">
-                    <div class="image-size position-relative h-100">
-                        <img :src="each.avatar" :alt="each.title">
-                    </div>
-                    <div class="position-absolute start-0 bottom-0 p-3">
-                        <div class="badge bg-dark p-3">
-                            <img :src="'/images/avatar.png'" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar === null">
-                            <img :src="each.user.avatar" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar !== null">
-                            {{each.user.name}}
+                <a href="javascript:void(0)" @click="manageModal(1, each.id)">
+                    <div class="bg-white position-relative h-100 shadow">
+                        <div class="image-size position-relative h-100">
+                            <img :src="each.avatar" :alt="each.title">
+                        </div>
+                        <div class="position-absolute start-0 bottom-0 p-3">
+                            <div class="badge bg-dark p-3">
+                                <img :src="'/images/avatar.png'" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar === null">
+                                <img :src="each.user.avatar" class="global-avatar me-2" alt="avatar" v-if="each.user.avatar !== null">
+                                {{each.user.name}}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <!-- data section end -->
@@ -122,6 +124,25 @@
         </div>
         <!-- pagination section end -->
 
+        <div class="modal fade" id="manageModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="btn-close" @click="manageModal(2,'')"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center">
+                            <img class="img-fluid" v-if="infoData?.avatar !== null" :src="infoData?.avatar" alt="photo avatar">
+                        </div>
+                        <div class="pt-3">
+                            <img :src="infoData?.user?.avatar" class="global-avatar" alt="user avatar">
+                            {{infoData?.user?.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </template>
@@ -136,6 +157,8 @@
         data(){
 
             return{
+                listData: [],
+                infoData: [],
                 loading: false,
                 tableData: [],
                 formData: { limit: 12, page: 1 },
@@ -155,6 +178,47 @@
         },
 
         methods: {
+
+            manageModal(type, data = null) {
+                this.error = null;
+                this.photoParam = { id: '', title: '', avatar: null, status: 1 };
+                if (type === 1) {
+                    this.getPhoto();
+                    if (data !== null) {
+                        this.getSingle(data);
+                    }
+                    const myModal = new bootstrap.Modal("#manageModal", {keyboard: false, backdrop: 'static'});
+                    myModal.show();
+                } else {
+                    const myModal = document.querySelector("#manageModal");
+                    const modal = bootstrap.Modal.getInstance(myModal);
+                    modal.hide();
+                }
+            },
+
+            /* ------------------------------------------
+                get photo use for photo single data get
+            --------------------------------------------*/
+
+            getPhoto(){
+                apiService.GET(apiRoute.global_list, (res) => {
+                    if(res.status === 200){
+                        this.infoData = res.data;
+                    }
+                });
+            },
+
+            getSingle(id = null) {
+                let param = { id: '' }
+                if (id != null) { param.id = id } else { param.id = this.selected[0] }
+                apiService.POST(apiRoute.global_single, param, (res) => {
+                    if (res.status === 200) {
+                        this.infoData = res.data;
+                    } else {
+                        this.error = res.errors;
+                    }
+                });
+            },
 
             /* ------------------------------------------
                 User public photo show in list

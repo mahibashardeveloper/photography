@@ -27,7 +27,8 @@ const apiRoutes = {
     media: UserApiVersion + '/media/upload',
 
     // Global
-    global_list: GlobalApiVersion + '/photo/list',
+    global_list: GlobalApiVersion + '/global/list',
+    global_single: GlobalApiVersion + '/global/single',
 
 }
 

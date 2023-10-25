@@ -14,4 +14,9 @@ class GlobalController extends BaseController
         return response()->json($rv, 200);
     }
 
+    public function single(Request $request){
+        $rv = GlobalService::single($request);
+        return response()->json($rv, 200);
+    }
+
 }
