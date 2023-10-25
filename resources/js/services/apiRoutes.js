@@ -14,6 +14,7 @@ const apiRoutes = {
     user_update: UserApiVersion + '/profile/update',
     user_password: UserApiVersion + '/profile/password',
     user_logout: UserApiVersion + '/profile/logout',
+    user_login_history: UserApiVersion + '/profile/list',
 
     // Photo
     photo_create: UserApiVersion + '/photo/create',

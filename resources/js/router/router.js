@@ -9,6 +9,7 @@ import forget from '../pages/forget.vue';
 import profile from '../pages/profile.vue';
 import settings from "../pages/user/settings.vue";
 import portfolio from "../pages/user/portfolio.vue";
+import loginHistory from "../pages/user/loginHistory.vue";
 
 const ROOT_URL = '';
 
@@ -24,6 +25,7 @@ const routes = [
                 children: [
                     {path: ROOT_URL + '/portfolio', name: 'portfolio', component: portfolio, meta: {title: 'portfolio'}},
                     {path: ROOT_URL + '/settings', name: 'settings', component: settings, meta: {title: 'settings'}},
+                    {path: ROOT_URL + '/login_history', name: 'loginHistory', component: loginHistory, meta: {title: 'login history'}},
                 ]
             },
         ],

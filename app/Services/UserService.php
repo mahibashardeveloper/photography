@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\LoginTimeHistory;
 use App\Models\User;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,9 @@ class UserService extends BaseController
             $credential = ['email' => $request->email, 'password' => $request->password];
             if (Auth::attempt($credential, $request->remember)) {
                 $user = Auth::user();
+                $log = new LoginTimeHistory();
+                $log->user_id = $user->id;
+                $log->save();
                 return ['status' => 200, 'data' => $user];
             } else {
                 return ['status' => 500, 'errors' => ['error' => 'Invalid Credentials! Please try again']];
@@ -181,6 +185,19 @@ class UserService extends BaseController
             Auth::logout();
             return ['status' => 200, 'msg' => 'logout successfully'];
         } catch(\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function userLogList($request)
+    {
+        try {
+            $user_id = Auth::id();
+            $limit = $request->limit ?? 10;
+            $results = LoginTimeHistory::where('user_id', $user_id)->orderBy('id', 'desc');
+            $paginatedData = $results->paginate($limit);
+            return ['status' => 200, 'data' => $paginatedData];
+        } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
