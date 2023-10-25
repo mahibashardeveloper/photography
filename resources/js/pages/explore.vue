@@ -135,7 +135,8 @@
                             <img class="img-fluid" v-if="infoData?.avatar !== null" :src="infoData?.avatar" alt="photo avatar">
                         </div>
                         <div class="pt-3">
-                            <img :src="infoData?.user?.avatar" class="global-avatar" alt="user avatar">
+                            <img :src="'/images/avatar.png'" class="global-avatar" alt="user avatar" v-if="infoData?.user?.avatar === null">
+                            <img :src="infoData?.user?.avatar" class="global-avatar" alt="user avatar" v-else>
                             {{infoData?.user?.name}}
                         </div>
                     </div>
@@ -229,6 +230,7 @@
                 this.formData.page = this.current_page;
                 apiService.POST(apiRoute.global_list, this.formData, (res) => {
                     this.loading = false;
+                    console.log(res)
                     if (res.status === 200) {
                         this.tableData = res.data.data;
                         this.total_data = res.data.total;

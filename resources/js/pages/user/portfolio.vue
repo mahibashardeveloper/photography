@@ -403,7 +403,6 @@
                 this.formData.page = this.current_page;
                 apiService.POST(apiRoute.photo_list, this.formData, (res) => {
                     this.loading = false;
-                    console.log(res)
                     if (res.status === 200) {
                         this.tableData = res.data.data;
                         this.total_data = res.data.total;
