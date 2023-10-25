@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Photo;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Validator;
 
 class GlobalService extends BaseController
 {
