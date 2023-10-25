@@ -1,11 +1,15 @@
 <template>
 
     <div class="row justify-content-around align-items-center vh-100">
+        <!-- background image section start -->
         <div class="col-12 col-lg-8 d-none d-xl-block">
             <img :src="'/images/photography-background.png'" class="img-fluid" alt="photographer-background">
         </div>
+        <!-- background image section end -->
+
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-3">
 
+            <!-- forget section start -->
             <div v-if="pageType === 1">
 
                 <form @submit.prevent="forget" class="border border-secondary-subtle p-4 rounded-3">
@@ -43,9 +47,12 @@
                 </form>
 
             </div>
+            <!-- forget section end -->
 
+            <!-- reset section start -->
             <div v-if="pageType === 2">
 
+                <!-- code send section start -->
                 <div class="text-center py-5 mb-4 border rounded-3 border-secondary-subtle">
                     <div class="mb-3">
                         Your reset code has been send into
@@ -54,6 +61,7 @@
                         mailTrap
                     </a>
                 </div>
+                <!-- code send section end -->
 
                 <form @submit.prevent="reset" class="border border-secondary-subtle p-4 rounded-3">
                     <div class="mb-4">
@@ -103,7 +111,9 @@
                 </form>
 
             </div>
+            <!-- reset section end -->
 
+            <!-- successfully reset section and route into login section start -->
             <div v-if="pageType === 3">
 
                 <div class="text-center py-5 mb-4 border rounded-3 border-secondary-subtle">
@@ -116,6 +126,7 @@
                 </div>
 
             </div>
+            <!-- successfully reset section and route into login section end -->
 
         </div>
     </div>
@@ -148,11 +159,21 @@
         },
         mounted() {},
         created() {
+
+            /* ------------------------------------------
+                User Authentication check
+            --------------------------------------------*/
+
             if(this.UserInfo != null){
                 this.$router.push({name: 'portfolio'});
             }
         },
         methods: {
+
+            /* ------------------------------------------
+                forget
+            --------------------------------------------*/
+
             forget() {
                 this.forgetLoading = true;
                 this.error = null;
@@ -169,6 +190,11 @@
                     }
                 })
             },
+
+            /* ------------------------------------------
+                reset
+            --------------------------------------------*/
+
             reset() {
                 this.resetLoading = true;
                 this.error = null;

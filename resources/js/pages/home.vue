@@ -1,5 +1,6 @@
 <template>
 
+    <!-- hero section start -->
     <section class="w-100 pb-5">
         <div class="row align-items-center">
             <div class="col-md-6 ps-3 py-5">
@@ -31,7 +32,9 @@
             </div>
         </div>
     </section>
+    <!-- hero section end -->
 
+    <!-- summary section start -->
     <section class="w-100 py-5">
         <div class="d-flex justify-content-sm-center">
             <div class="py-5 text-secondary text-center col-12 col-sm-10 col-md-8 h3">
@@ -40,9 +43,11 @@
             </div>
         </div>
     </section>
+    <!-- summary section end -->
 
+    <!-- benefit section start -->
     <section class="w-100 py-5 text-center">
-        <div class="pb-3 h1 fw-bold">Why choose a photography website?</div>
+        <div class="pb-3 h1 fw-bold">Why choose our photography website</div>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3">
                 <div class="border h-100">
@@ -78,7 +83,9 @@
             </div>
         </div>
     </section>
+    <!-- benefit section end -->
 
+    <!-- summary section start -->
     <section class="w-100 py-5">
         <div class="d-flex justify-content-sm-center">
             <div class="py-5 text-secondary text-center col-12 col-sm-10 col-md-8 h3">
@@ -87,7 +94,9 @@
             </div>
         </div>
     </section>
+    <!-- summary section end -->
 
+    <!-- feature section start -->
     <section class="w-100 py-5">
         <div class="h1 fw-bold pb-3 text-center">Photography Powerful Features For Your Website</div>
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
@@ -183,7 +192,9 @@
             </div>
         </div>
     </section>
+    <!-- feature section end -->
 
+    <!-- map section start -->
     <section class="w-100 py-5">
         <div class="row align-items-center">
             <div class="col-md-8 p-3">
@@ -213,6 +224,7 @@
             </div>
         </div>
     </section>
+    <!-- map section end -->
 
 </template>
 
@@ -220,25 +232,11 @@
 
     export default {
 
-        data(){
+        data(){ return{} },
 
-            return{
+        mounted() {},
 
-            }
-
-        },
-
-        mounted() {
-
-
-
-        },
-
-        methods: {
-
-
-
-        }
+        methods: {}
 
     }
 

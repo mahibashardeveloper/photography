@@ -4,15 +4,18 @@
         Settings
     </div>
 
+    <!-- group of button section start -->
     <div class="d-flex align-items-center mb-4">
-        <a href="javascript:void(0)" class="btn me-3" @click="changePasswordModal" :class="{'btn-dark' : tab === 1, 'btn-outline-dark' : tab !== 1}">
+        <a href="javascript:void(0)" class="btn me-3" @click="changePasswordTab" :class="{'btn-dark' : tab === 1, 'btn-outline-dark' : tab !== 1}">
             Change Password
         </a>
-        <a href="javascript:void(0)" class="btn" @click="editPasswordModal" :class="{'btn-dark' : tab === 2, 'btn-outline-dark' : tab !== 2}">
+        <a href="javascript:void(0)" class="btn" @click="editProfileTab" :class="{'btn-dark' : tab === 2, 'btn-outline-dark' : tab !== 2}">
             Edit Profile
         </a>
     </div>
+    <!-- group of button section end -->
 
+    <!-- password change section start -->
     <form @submit.prevent="updatePassword" class="col-12 col-lg-6 p-3 border bg-white rounded-3" v-if="tab === 1">
         <div class="mb-3">
             <label for="current_password" class="form-label">Current Password</label>
@@ -32,7 +35,9 @@
         <button type="submit" class="btn btn-outline-dark" v-if="updateProfileLoading === false">Update Password</button>
         <button type="button" class="btn btn-dark" v-if="updateProfileLoading === true">Loading...</button>
     </form>
+    <!-- password change section end -->
 
+    <!-- profile update section start -->
     <form @submit.prevent="updateProfile" class="col-12 col-lg-6 p-3 border bg-white rounded-3" v-if="tab === 2">
         <div class="mb-3">
             <div class="d-flex justify-content-center mb-3">
@@ -65,6 +70,7 @@
         <button type="submit" class="btn btn-outline-dark" v-if="updateProfileLoading === false">Update Profile</button>
         <button type="button" class="btn btn-dark" v-if="updateProfileLoading === true">Loading...</button>
     </form>
+    <!-- profile update section end -->
 
 </template>
 
@@ -102,18 +108,30 @@
 
         methods: {
 
-            changePasswordModal(){
+            /* ------------------------------------------
+                change password of user in tab 1 (default)
+            --------------------------------------------*/
+
+            changePasswordTab(){
                 this.tab = 1;
                 this.edit = true;
                 this.editParam = JSON.parse(JSON.stringify(this.profile_data));
             },
 
-            editPasswordModal(){
+            /* ------------------------------------------
+                edit profile of user in tab 2
+            --------------------------------------------*/
+
+            editProfileTab(){
                 this.tab = 2;
                 this.edit = true;
                 this.editParam = JSON.parse(JSON.stringify(this.profile_data));
                 this.editParam.avatarFilePath = this.editParam.media != null ? this.editParam.media.full_file_path : null
             },
+
+            /* ------------------------------------------
+                attach user profile image
+            --------------------------------------------*/
 
             attachFile(event) {
                 let file = event.target.files[0];
@@ -128,6 +146,10 @@
                 })
             },
 
+            /* ------------------------------------------
+                get profile of user data in details
+            --------------------------------------------*/
+
             getProfile() {
                 this.profileDataLoading = true;
                 apiServices.GET(apiRoutes.user_details, (res) => {
@@ -137,6 +159,10 @@
                     }
                 })
             },
+
+            /* ------------------------------------------
+                update profile of user information
+            --------------------------------------------*/
 
             updateProfile() {
                 this.updateProfileLoading = true;
@@ -153,6 +179,10 @@
                     }
                 })
             },
+
+            /* ------------------------------------------
+                update password of user information
+            --------------------------------------------*/
 
             updatePassword() {
                 this.updateProfileLoading = true;

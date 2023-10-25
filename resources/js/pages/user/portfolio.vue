@@ -4,6 +4,7 @@
         Portfolio
     </div>
 
+    <!-- button and search section start -->
     <div class="row">
         <div class="col-md-6">
             <a href="javascript:void(0)" class="btn btn-outline-dark mb-3" @click="manageModal(1, null)">
@@ -14,7 +15,9 @@
             <input type="text" class="form-control" placeholder="Search Here anything" v-model="formData.q" @keyup="SearchData">
         </div>
     </div>
+    <!-- button and search section end -->
 
+    <!-- page loading section start -->
     <div v-if="loading === true">
         <h6 class="card-text placeholder-glow">
             <span class="p-2">
@@ -28,7 +31,9 @@
             </span>
         </h6>
     </div>
+    <!-- page loading section end -->
 
+    <!-- no data founded section start -->
     <div class="page-no-data-found" v-if="tableData.length === 0 && loading === false">
         <div class="w-100">
             <div class="mb-3">
@@ -38,7 +43,9 @@
             <span>Click "Upload Photo" to create new data</span>
         </div>
     </div>
+    <!-- no data founded section end -->
 
+    <!-- data founded section start -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 h-100" v-if="tableData.length > 0 && loading === false">
 
         <div class="p-3 h-100" v-for="each in tableData">
@@ -84,7 +91,9 @@
         </div>
 
     </div>
+    <!-- data founded section end -->
 
+    <!-- pagination section start -->
     <div class="d-flex justify-content-center" v-if="tableData.length > 0 && loading === false">
         <div class="pagination">
             <div class="page-item" @click="PrevPage">
@@ -133,7 +142,9 @@
             </div>
         </div>
     </div>
+    <!-- pagination section end -->
 
+    <!-- manage modal section start -->
     <div class="modal fade" id="manageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -184,7 +195,9 @@
             </div>
         </div>
     </div>
+    <!-- manage modal section end -->
 
+    <!-- delete modal section start -->
     <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-3">
@@ -199,6 +212,7 @@
             </div>
         </div>
     </div>
+    <!-- delete modal section end -->
 
 </template>
 
@@ -239,6 +253,10 @@
 
         methods: {
 
+            /* ------------------------------------------
+                delete photo of user in single action
+            --------------------------------------------*/
+
             deletePhoto() {
                 this.deleteLoading = true;
                 this.selected.forEach((v) => {
@@ -256,6 +274,10 @@
                 })
             },
 
+            /* ------------------------------------------
+                open delete modal of authenticated user action
+            --------------------------------------------*/
+
             deleteModal(type, id) {
                 if (type === 1) {
                     this.deleteParam.ids.push(id)
@@ -269,6 +291,10 @@
                     modal.hide();
                 }
             },
+
+            /* ------------------------------------------
+                open manage modal of authenticated user action as edit and delete
+            --------------------------------------------*/
 
             manageModal(type, data = null) {
                 this.error = null;
@@ -287,6 +313,10 @@
                 }
             },
 
+            /* ------------------------------------------
+                get photo use for photo list get
+            --------------------------------------------*/
+
             getPhoto() {
                 apiService.POST(apiRoute.photo_list, '', (res) => {
                     if (res.status === 200) {
@@ -295,6 +325,10 @@
                 })
             },
 
+            /* ------------------------------------------
+                manage photo depend of id null or not null
+            --------------------------------------------*/
+
             managePhoto() {
                 if (this.photoParam.id) {
                     this.edit();
@@ -302,6 +336,10 @@
                     this.create();
                 }
             },
+
+            /* ------------------------------------------
+                get photo use for photo single data get
+            --------------------------------------------*/
 
             getSingle(id = null) {
                 let param = { id: '' }
@@ -314,6 +352,10 @@
                     }
                 });
             },
+
+            /* ------------------------------------------
+                create photo with details
+            --------------------------------------------*/
 
             create() {
                 this.createLoading = true;
@@ -329,6 +371,10 @@
                     }
                 });
             },
+
+            /* ------------------------------------------
+                edit photo
+            --------------------------------------------*/
 
             edit() {
                 this.createLoading = true;
@@ -346,6 +392,10 @@
                 });
             },
 
+            /* ------------------------------------------
+                list photo
+            --------------------------------------------*/
+
             list() {
                 this.loading = true;
                 this.formData.page = this.current_page;
@@ -362,12 +412,20 @@
                 });
             },
 
+            /* ------------------------------------------
+                pagination previous photo list controller
+            --------------------------------------------*/
+
             PrevPage() {
                 if (this.current_page > 1) {
                     this.current_page = this.current_page - 1;
                     this.list()
                 }
             },
+
+            /* ------------------------------------------
+                pagination next photo list controller
+            --------------------------------------------*/
 
             NextPage() {
                 if (this.current_page < this.total_pages) {
@@ -376,10 +434,18 @@
                 }
             },
 
+            /* ------------------------------------------
+                pagination page change photo list controller
+            --------------------------------------------*/
+
             pageChange(page) {
                 this.current_page = page;
                 this.list();
             },
+
+            /* ------------------------------------------
+                search photo list controller
+            --------------------------------------------*/
 
             SearchData() {
                 clearTimeout(this.searchTimeout);
@@ -387,6 +453,10 @@
                     this.list();
                 }, 500);
             },
+
+            /* ------------------------------------------
+                attach file of photo upload controller
+            --------------------------------------------*/
 
             attachFile(event) {
                 let file = event.target.files[0];

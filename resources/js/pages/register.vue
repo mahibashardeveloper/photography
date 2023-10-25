@@ -1,9 +1,13 @@
 <template>
 
     <div class="row justify-content-around align-items-center vh-100">
+        <!-- background image section start -->
         <div class="col-12 col-lg-8 d-none d-xl-block">
             <img :src="'/images/photography-background.png'" class="img-fluid" alt="photographer-background">
         </div>
+        <!-- background image section end -->
+
+        <!-- register section start -->
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-3">
             <form @submit.prevent="register" class="border border-secondary-subtle p-4 rounded-3" v-if="registerType === 1">
                 <div class="mb-4">
@@ -57,6 +61,8 @@
                 </router-link>
             </div>
         </div>
+        <!-- register section end -->
+
     </div>
 
 </template>
@@ -83,11 +89,24 @@
         },
         mounted() {},
         created() {
+
+            /* ------------------------------------------
+                user authentication check
+            --------------------------------------------*/
+
             if(this.UserInfo != null){
                 this.$router.push({name: 'portfolio'});
             }
+
+
+
         },
         methods: {
+
+            /* ------------------------------------------
+                registration
+            --------------------------------------------*/
+
             register(){
                 this.accessLoading = true;
                 apiService.POST(apiRoutes.register, this.registerParam, (res) => {
@@ -106,6 +125,7 @@
                     }
                 });
             }
+
         }
     }
 

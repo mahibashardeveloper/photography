@@ -2,22 +2,29 @@
 
     <div class="user">
 
+        <!-- title with search section start -->
         <section class="w-100">
             <div class="row align-items-center justify-content-between">
                 <div class="col-4 py-3 h3 fw-bold">
                     Explore
                 </div>
                 <div class="col-8 col-md-6 col-lg-4 py-3">
+
+                    <!-- search section start -->
                     <div class="position-relative">
                         <input type="text" class="form-control ps-5" placeholder="Search Here anything" v-model="formData.q" @keyup="SearchData">
                         <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                             <i class="bi bi-search"></i>
                         </div>
                     </div>
+                    <!-- search section end -->
+
                 </div>
             </div>
         </section>
+        <!-- title with search section end -->
 
+        <!-- page loading section start -->
         <div v-if="loading === true">
             <h6 class="card-text placeholder-glow">
                 <span class="p-2">
@@ -31,7 +38,9 @@
                 </span>
             </h6>
         </div>
+        <!-- page loading section end -->
 
+        <!-- no data founded section start -->
         <div class="page-no-data-found" v-if="tableData.length === 0 && loading === false">
             <div class="w-100">
                 <div class="mb-3">
@@ -41,7 +50,9 @@
                 <span>Click "Upload Photo" to create new data</span>
             </div>
         </div>
+        <!-- no data founded section end -->
 
+        <!-- data section start -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 h-100" v-if="tableData.length > 0 && loading === false">
             <div class="p-3 h-100" v-for="each in tableData">
                 <a href="javascript:void(0)">
@@ -59,7 +70,9 @@
                 </a>
             </div>
         </div>
+        <!-- data section end -->
 
+        <!-- pagination section start -->
         <div class="d-flex justify-content-center" v-if="tableData.length > 0 && loading === false">
             <div class="pagination">
                 <div class="page-item" @click="PrevPage">
@@ -108,87 +121,106 @@
                 </div>
             </div>
         </div>
+        <!-- pagination section end -->
 
     </div>
-
-
 
 </template>
 
 <script>
 
-import apiService from "../services/apiServices.js";
-import apiRoute from "../services/apiRoutes.js";
+    import apiService from "../services/apiServices.js";
+    import apiRoute from "../services/apiRoutes.js";
 
-export default{
+    export default{
 
-    data(){
+        data(){
 
-        return{
-            loading: false,
-            tableData: [],
-            formData: { limit: 12, page: 1 },
-            total_pages: 0,
-            current_page: 0,
-            buttons: [],
-            searchTimeout: null,
-            error: null,
-            responseData: null,
-            total_data: 0,
-        }
-
-    },
-
-    mounted() {
-        this.list();
-    },
-
-    methods: {
-
-        list() {
-            this.loading = true;
-            this.formData.page = this.current_page;
-            apiService.POST(apiRoute.global_list, this.formData, (res) => {
-                this.loading = false;
-                console.log(res)
-                if (res.status === 200) {
-                    this.tableData = res.data.data;
-                    this.total_data = res.data.total;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
-                }
-            });
-        },
-
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.list()
+            return{
+                loading: false,
+                tableData: [],
+                formData: { limit: 12, page: 1 },
+                total_pages: 0,
+                current_page: 0,
+                buttons: [],
+                searchTimeout: null,
+                error: null,
+                responseData: null,
+                total_data: 0,
             }
+
         },
 
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.list()
-            }
-        },
-
-        pageChange(page) {
-            this.current_page = page;
+        mounted() {
             this.list();
         },
 
-        SearchData() {
-            clearTimeout(this.searchTimeout);
-            this.searchTimeout = setTimeout(() => {
+        methods: {
+
+            /* ------------------------------------------
+                User public photo show in list
+            --------------------------------------------*/
+
+            list() {
+                this.loading = true;
+                this.formData.page = this.current_page;
+                apiService.POST(apiRoute.global_list, this.formData, (res) => {
+                    this.loading = false;
+                    console.log(res)
+                    if (res.status === 200) {
+                        this.tableData = res.data.data;
+                        this.total_data = res.data.total;
+                        this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
+                        this.current_page = res.data.current_page;
+                        this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
+                    }
+                });
+            },
+
+            /* ------------------------------------------
+                pagination previous list controller
+            --------------------------------------------*/
+
+            PrevPage() {
+                if (this.current_page > 1) {
+                    this.current_page = this.current_page - 1;
+                    this.list()
+                }
+            },
+
+            /* ------------------------------------------
+                pagination next list controller
+            --------------------------------------------*/
+
+            NextPage() {
+                if (this.current_page < this.total_pages) {
+                    this.current_page = this.current_page + 1;
+                    this.list()
+                }
+            },
+
+            /* ------------------------------------------
+                pagination page change list controller
+            --------------------------------------------*/
+
+            pageChange(page) {
+                this.current_page = page;
                 this.list();
-            }, 500);
-        },
+            },
+
+            /* ------------------------------------------
+                search list controller
+            --------------------------------------------*/
+
+            SearchData() {
+                clearTimeout(this.searchTimeout);
+                this.searchTimeout = setTimeout(() => {
+                    this.list();
+                }, 500);
+            },
+
+        }
 
     }
-
-}
 
 </script>

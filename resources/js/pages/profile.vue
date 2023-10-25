@@ -17,6 +17,11 @@
         },
         mounted() {},
         created() {
+
+            /* ------------------------------------------
+                user authentication check
+            --------------------------------------------*/
+
             if(this.UserInfo === null){
                 this.$router.push({name: 'login'});
             }
