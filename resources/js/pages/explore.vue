@@ -47,7 +47,6 @@
                     <i class="bi bi-exclamation-circle fs-1"></i>
                 </div>
                 <div class="mb-3">There are no data founded</div>
-                <span>Click "Upload Photo" to create new data</span>
             </div>
         </div>
         <!-- no data founded section end -->
