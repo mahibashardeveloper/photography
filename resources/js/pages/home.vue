@@ -3,8 +3,8 @@
     <!-- hero section start -->
     <section class="w-100 pb-5">
         <div class="row align-items-center">
-            <div class="col-md-6 ps-3 py-5">
-                <div class="col-12 fw-bold h1 mb-3 col-md-6">
+            <div class="col-lg-6 ps-3 py-5">
+                <div class="col-12 fw-bold h1 mb-3 col-xl-6 col-lg-7 col-md-7 col-sm-8">
                     Create your beautiful photography portfolio
                 </div>
                 <div class="col-12 text-secondary mb-3 col-md-10">
@@ -27,7 +27,7 @@
                     </router-link>
                 </div>
             </div>
-            <div class="col-md-6 px-3">
+            <div class="col-lg-6 px-3">
                 <img :src="'/images/background-image.jpeg'" class="img-fluid rounded-4" alt="background-image">
             </div>
         </div>

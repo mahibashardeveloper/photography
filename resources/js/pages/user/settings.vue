@@ -5,11 +5,11 @@
     </div>
 
     <!-- group of button section start -->
-    <div class="d-flex align-items-center mb-4">
-        <a href="javascript:void(0)" class="btn me-3" @click="changePasswordTab" :class="{'btn-dark' : tab === 1, 'btn-outline-dark' : tab !== 1}">
+    <div class="d-flex align-items-center flex-wrap">
+        <a href="javascript:void(0)" class="btn me-3 mb-4" @click="changePasswordTab" :class="{'btn-dark' : tab === 1, 'btn-outline-dark' : tab !== 1}">
             Change Password
         </a>
-        <a href="javascript:void(0)" class="btn" @click="editProfileTab" :class="{'btn-dark' : tab === 2, 'btn-outline-dark' : tab !== 2}">
+        <a href="javascript:void(0)" class="btn mb-4" @click="editProfileTab" :class="{'btn-dark' : tab === 2, 'btn-outline-dark' : tab !== 2}">
             Edit Profile
         </a>
     </div>
